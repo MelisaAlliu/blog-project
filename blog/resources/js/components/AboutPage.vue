@@ -1,8 +1,10 @@
 <template>
     <section class="single-blog-post">
-        <h1>About This blog</h1>
-        <div class="video-content" data-aos="fade-left">
-            <video width="940" height="660" autoplay loop muted>
+        <h1 class="text-3xl font-bold mb-6 mt-6 text-center">
+            About Mindful Heartbeat
+        </h1>
+        <div class="video-content flex justify-center" data-aos="fade-left">
+            <video class="max-w-[940px] h-auto" autoplay loop muted>
                 <source
                     src="../../../public/images/video1.mp4"
                     type="video/mp4"
@@ -11,24 +13,47 @@
             </video>
         </div>
 
-        <div>
-            <p class="about-text">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam,
-                ut tempore repellat molestias a distinctio fuga molestiae eaque
-                laborum vero eos, maiores fugit culpa porro delectus aliquam
-                adipisci nisi voluptas sequi odit, numquam architecto officia?
-                Corrupti recusandae beatae sint quasi iste libero maiores
-                commodi odio molestias vel fugit, omnis nobis consectetur harum
-                veritatis necessitatibus asperiores officiis. Dolores nemo
-                voluptates.
-                <br /><br />
-                Adipisicing elit. Illum reprehenderit sapiente at ab amet, nobis
-                porro pariatur similique dicta nisi velit fugiat reiciendis,
-                quos fuga nemo aliquam aspernatur est vel. Lorem ipsum dolor sit
-                amet consectetur, adipisicing elit. Omnis non ad veritatis.
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem
-                ipsum dolor sit.
-            </p>
+        <div class="about-info flex justify-center">
+            <div>
+                <p class="max-w-2xl text-lg mb-6 mt-6 text-white">
+                    Welcome to Mindful Heartbeat, a digital sanctuary where
+                    heart and mind converge to explore the depths of human
+                    experience, foster personal growth, and cultivate profound
+                    insights.
+
+                    <br /><br />
+                    At Mindful Heartbeat, we believe that true wisdom emerges
+                    from the harmonious interplay of the heart and mind. Our
+                    mission is to provide a nurturing space where individuals
+                    can embark on a transformative journey of self-discovery,
+                    finding balance, clarity, and meaning in their lives.
+
+                    <br /><br />
+                    Through our curated collection of articles, essays, and
+                    reflections, we invite you to embark on an exploration of
+                    the multifaceted dimensions of the human experience. From
+                    introspective musings to thought-provoking analyses, our
+                    content delves into diverse topics including:
+                </p>
+                <ul class="max-w-2xl text-lg mb-6 text-white">
+                    <li class="font-light mb-4">
+                        Emotional intelligence and self-awareness
+                    </li>
+                    <li class="font-light mb-4">
+                        Mental health and well-being
+                    </li>
+                    <li class="font-light mb-4">
+                        Personal development and growth mindset
+                    </li>
+                    <li class="font-light mb-4">
+                        Mindfulness and meditation practices
+                    </li>
+                    <li class="font-light mb-4">
+                        Relationships and communication
+                    </li>
+                    <li class="font-light mb-4">Creativity and inspiration</li>
+                </ul>
+            </div>
         </div>
     </section>
 </template>
@@ -37,4 +62,15 @@
 export default {};
 </script>
 
-<style scoped></style>
+<style scoped>
+.about-info {
+    background-image: url("../../../public/images/background-image5.png");
+}
+.single-blog-post .video-content {
+    margin: 20px 0;
+}
+.single-blog-post .about-text li {
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+</style>

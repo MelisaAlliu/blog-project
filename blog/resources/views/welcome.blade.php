@@ -13,6 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" 
       />
       @vite('resources/js/app.js')
+      @vite('resources/css/app.css')
 </head>
 <body>
   <div id="app">

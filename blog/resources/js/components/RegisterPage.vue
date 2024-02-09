@@ -1,30 +1,64 @@
 <template>
-    <div id="backend-view">
-        <form @submit.prevent="submit">
-            <h3>Sign Up Here</h3>
-            <label for="name">Name</label>
-            <input type="text" id="name" v-model="fields.name" />
+    <div
+        id="backend-view"
+        class="min-h-screen bg-cover bg-center flex items-center"
+    >
+        <form
+            @submit.prevent="submit"
+            class="w-96 bg-white bg-opacity-25 rounded-lg p-8"
+        >
+            <h3 class="text-2xl text-red-500 font-bold mb-4">Sign Up Here</h3>
+            <label for="name" class="block text-white mb-2">Name</label>
+            <input
+                type="text"
+                id="name"
+                v-model="fields.name"
+                class="w-full h-10 rounded-md border border-gray-300 px-3 leading-6 focus:outline-none focus:border-blue-400"
+            />
             <span v-if="errors.name" class="error">{{ errors.name[0] }}</span>
-
-            <label for="email">Email</label>
-            <input type="text" id="email" v-model="fields.email" />
+            <label for="email" class="block text-white mt-4 mb-2">Email</label>
+            <input
+                type="text"
+                id="email"
+                v-model="fields.email"
+                class="w-full h-10 rounded-md border border-gray-300 px-3 leading-6 focus:outline-none focus:border-blue-400"
+            />
             <span v-if="errors.email" class="error">{{ errors.email[0] }}</span>
-
-            <label for="password">Password</label>
-            <input type="password" id="password" v-model="fields.password" />
+            <label for="password" class="block text-white mt-4 mb-2"
+                >Password</label
+            >
+            <input
+                type="password"
+                id="password"
+                v-model="fields.password"
+                class="w-full h-10 rounded-md border border-gray-300 px-3 leading-6 focus:outline-none focus:border-blue-400"
+            />
             <span v-if="errors.password" class="error">{{
                 errors.password[0]
             }}</span>
-
-            <label for="password_confirmation">Confirm password</label>
+            <label
+                for="password_confirmation"
+                class="block text-white mt-4 mb-2"
+                >Confirm password</label
+            >
             <input
                 type="password"
                 id="password_confirmation"
                 v-model="fields.password_confirmation"
+                class="w-full h-10 rounded-md border border-gray-300 px-3 leading-6 focus:outline-none focus:border-blue-400"
             />
-
-            <button type="submit">Sign Up</button>
-            <span>Have an account?<a href=""> Log in</a></span>
+            <button
+                type="submit"
+                class="w-full mt-6 bg-blue-500 text-white font-semibold py-2 px-4 rounded-md"
+            >
+                Sign Up
+            </button>
+            <span class="block mt-4 text-white"
+                >Already have an account?
+                <router-link to="login" class="text-blue-500"
+                    >Log in</router-link
+                ></span
+            >
         </form>
     </div>
 </template>
@@ -55,66 +89,23 @@ export default {
 
 <style scoped>
 #backend-view {
-    height: 100vh;
     background-image: url("../../../public/images/background-image3.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: grid;
-    align-items: center;
 }
+
 form {
-    width: 400px;
     background-color: transparent;
     margin: 0 auto;
-    border-radius: 10px;
     border: 2px solid rgba(255, 255, 255, 0.1);
-    padding: 50px 35px;
     backdrop-filter: blur(10px);
 }
 form * {
     letter-spacing: 0.5px;
     outline: none;
 }
-
-label {
-    display: block;
-    margin-top: 20px;
-    font-size: 16px;
-    font-weight: 500;
-    color: #ffffff;
-}
-input {
-    display: block;
-    height: 50px;
-    width: 100%;
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 16px;
-    font-weight: 300;
-}
-
 button {
-    margin-top: 50px;
-    width: 100%;
-    background-color: rgba(0, 46, 173, 0.7);
-    color: #ffffff;
-    padding: 15px 0;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
+    background-color: #618da8;
 }
-form span {
-    display: block;
-    margin-top: 20px;
-}
-a {
-    color: rgba(0, 46, 173, 0.8);
-}
-
-.loader {
-    text-align: center;
-    margin-bottom: 15px;
+.error {
+    color: red;
 }
 </style>
