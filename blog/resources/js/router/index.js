@@ -10,9 +10,9 @@ import DashboardPage from "../components/DashboardPage.vue";
 import CreateCategories from "../components/categories/CreateCategories.vue";
 import CategoriesList from "../components/categories/CategoriesList.vue";
 import EditCategories from "../components/categories/EditCategories.vue";
-// import CreatePosts from "../components/posts/CreatePosts.vue";
+import CreatePosts from "../components/posts/CreatePosts.vue";
 import DashboardPostsList from "../components/posts/DashboardPostsList.vue";
-// import EditPosts from "../components/posts/EditPosts.vue";
+import EditPosts from "../components/posts/EditPosts.vue";
 
 const routes = [
     {
@@ -73,33 +73,38 @@ const routes = [
         path: "/categories",
         name: "CategoriesList",
         component: CategoriesList,
+        meta: { requestAuth: true },
     },
 
     {
-        path: "/categories",
+        path: "/categories/:id/edit",
         name: "EditCategories",
         component: EditCategories,
         props: true,
+        meta: { requestAuth: true },
     },
 
-    // {
-    //     path: "/create-posts",
-    //     name: "CreatePosts",
-    //     component: CreatePosts,
-    // },
+    {
+        path: "/posts/create",
+        name: "CreatePosts",
+        component: CreatePosts,
+        meta: { requestAuth: true },
+    },
 
     {
         path: "/dashboard-posts",
         name: "DashboardPostsList",
         component: DashboardPostsList,
+        meta: { requestAuth: true },
     },
 
-    // {
-    //     path: "/posts",
-    //     name: "EditPosts",
-    //     component: EditPosts,
-    //     props: true,
-    // },
+    {
+        path: "/posts/:slug/edit",
+        name: "EditPosts",
+        component: EditPosts,
+        meta: { requiresAuth: true },
+        props: true,
+    },
 ];
 const router = createRouter({
     history: createWebHistory(),

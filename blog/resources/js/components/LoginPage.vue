@@ -1,7 +1,7 @@
 <template>
     <div
         id="backend-view"
-        class="min-h-screen bg-cover bg-center flex items-center"
+        class="login-wrapper min-h-screen bg-cover bg-center flex items-center"
     >
         <form
             @submit.prevent="login"

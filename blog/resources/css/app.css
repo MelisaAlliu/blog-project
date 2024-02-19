@@ -15,30 +15,20 @@ body {
     background: #000;
 }
 
-#wrapper {
-    margin-left: 300px;
-    overflow-x: hidden;
-}
-
-/* .wrapper {
-    max-width: 1610px;
-} */
-
 a {
     text-decoration: none;
     color: #999;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+#wrapper {
+    margin-left: 200px;
+    overflow-x: hidden;
 }
 
-/* .container {
-    padding: 0 15px;
-} */
+section {
+    margin: auto;
+}
 
-/* Scrollbar */
 ::-webkit-scrollbar {
     width: 5px;
     position: relative;
@@ -52,35 +42,6 @@ img {
     background: grey;
 }
 
-/* header */
-
-.header-text {
-    margin-top: 145px;
-    color: white;
-    text-align: center;
-    z-index: 1;
-}
-
-.header-text h1 {
-    font-size: 70px;
-    font-weight: 700;
-}
-
-.header-text h4 {
-    font-size: 22px;
-    font-weight: 300;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-/* Menu Button */
 .bar {
     width: 30px;
     height: 3px;
@@ -93,11 +54,10 @@ img {
     position: fixed;
     top: 2vh;
     left: 2vw;
-    z-index: 1;
+    z-index: 2000;
     display: none;
 }
 
-/* Close Button */
 .closeButton {
     font-size: 50px;
     padding-left: 85%;
@@ -106,7 +66,33 @@ img {
     display: none;
 }
 
-/* Medium devices and below */
+.swiper-pagination-bullet-active {
+    background-color: #618da8 !important;
+}
+
+.swiper-pagination-bullet {
+    background-color: #c4c4c4 !important;
+}
+
+.sidebar .router-link-active {
+    color: white;
+    padding: 3px 15px;
+}
+
+.error {
+    color: red;
+}
+
+.side-links {
+    display: flex;
+    justify-content: center;
+    margin-right: 35px;
+}
+
+:root {
+    --timing: 400ms;
+    --rotation: 20deg;
+}
 
 @media (max-width: 768px) {
     .sidebar {
@@ -126,14 +112,12 @@ img {
         display: block;
     }
 
-    /* Recommednded Cards */
     .recommended-cards {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 600px) {
-    /* Blog */
     .cards-blog {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
@@ -143,19 +127,16 @@ img {
         border: none;
     }
 
-    /* Recommended cards */
     .recommended-cards {
         display: grid;
         grid-template-columns: 1fr;
         gap: 10px;
     }
 
-    /* Footer */
     .main-footer div {
         display: block;
     }
 
-    /* Contact-us */
     #contact-us .container {
         display: grid;
         grid-template-columns: 1fr;
@@ -166,7 +147,6 @@ img {
         margin-bottom: 25px;
     }
 
-    /* Categories */
     .categories ul {
         flex-direction: column;
         text-align: center;
@@ -179,5 +159,18 @@ img {
 
     .categories ul li:nth-of-type(4) {
         margin-bottom: 25px;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    .wrapper,
+    .blog-page-wrapper,
+    .single-blog-post,
+    .dashboard-wrapper,
+    .login-wrapper,
+    .register-wrapper,
+    section,
+    .header-title {
+        width: 1710px;
     }
 }

@@ -2,15 +2,17 @@
     <div id="create-categories">
         <div id="contact-us">
             <h1>Edit Category!</h1>
-            <!-- success message -->
-            <div class="success-msg">
+            <div class="success-msg text-green-600" v-if="success">
                 <i class="fa fa-check"></i>
                 Updated successfully
             </div>
             <div class="contact-form">
-                <form>
+                <form @submit.prevent="submit">
                     <label for="name"><span>Name</span></label>
-                    <input type="text" id="name" />
+                    <input type="text" id="name" v-model="field.name" />
+                    <span v-if="errors.name" class="error">{{
+                        errors.name[0]
+                    }}</span>
 
                     <input type="submit" value="Submit" />
                 </form>
@@ -25,7 +27,50 @@
 </template>
 
 <script>
-export default {};
+export default {
+    props: ["id"],
+    data() {
+        return {
+            field: {},
+            errors: {},
+            success: false,
+        };
+    },
+    methods: {
+        submit() {
+            axios
+                .put("/api/categories/" + this.id, this.field)
+                .then(() => {
+                    this.field = {};
+                    this.errors = {};
+                    this.success = true;
+                    this.$emit("categoryEdited");
+                    setInterval(() => {
+                        this.success = false;
+                    }, 2500);
+
+                    this.$router.push({ name: "CategoriesList" });
+                })
+                .catch((error) => {
+                    this.errors = error.response.data.errors;
+                });
+        },
+    },
+    mounted() {
+        axios
+            .get("/api/categories/" + this.id)
+            .then((response) => {
+                this.field = response.data;
+            })
+            .catch((error) => {
+                if (error.response.status === 401) {
+                    this.$emit("updateSidebar");
+                    localStorage.removeItem("authenticated");
+                    this.$router.push({ name: "Login" });
+                }
+            });
+    },
+};
 </script>
 
 <style scoped>

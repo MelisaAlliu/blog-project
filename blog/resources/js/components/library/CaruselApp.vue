@@ -18,7 +18,7 @@
     >
         <swiper-slide
             ><img
-                src="../../../../public/images/carusel-image-1.jpg" /></swiper-slide
+                src="../../../../public/images/carusel-image-13.jpg" /></swiper-slide
         ><swiper-slide
             ><img
                 src="../../../../public/images/carusel-image-2.jpg" /></swiper-slide
@@ -113,7 +113,7 @@ body {
     background-size: cover;
     width: 304px;
     height: 304px;
-    border: 2px solid #618da8;
+    border: 2px solid gray;
 }
 
 .swiper-slide img {

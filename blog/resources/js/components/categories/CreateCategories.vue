@@ -4,11 +4,11 @@
             <h1 class="text-black text-center text-4xl font-bold">
                 Create New Category!
             </h1>
-            <div class="success-msg" v-if="success">
+            <div class="success-msg text-green-600" v-if="success">
                 <i class="fa fa-check"></i>
                 Category created successfully
             </div>
-            <div class="contact-form my-56">
+            <div class="contact-form">
                 <form @submit.prevent="submit">
                     <label for="name"><span>Name</span></label>
                     <input
@@ -17,7 +17,7 @@
                         v-model="field.name"
                         class="border border-black"
                     />
-                    <span v-if="errors.name" class="error">{{
+                    <span v-if="errors.name" class="error text-red-600">{{
                         errors.name[0]
                     }}</span>
 
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
     data() {
         return {

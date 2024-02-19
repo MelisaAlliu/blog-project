@@ -1,5 +1,18 @@
 <template>
     <section class="single-blog-post">
+        <img
+            class="about-logo"
+            src="../../../public/images/about-logo.png"
+            alt=""
+        />
+        <h1 class="text-3xl font-bold mb-6 mt-6 text-center">
+            Meet our writers
+        </h1>
+
+        <div class="about-writers">
+            <AboutWritersPage />
+        </div>
+
         <h1 class="text-3xl font-bold mb-6 mt-6 text-center">
             About Mindful Heartbeat
         </h1>
@@ -59,12 +72,28 @@
 </template>
 
 <script>
-export default {};
+import AboutWritersPage from "./AboutWritersPage.vue";
+export default {
+    components: {
+        AboutWritersPage,
+    },
+};
 </script>
 
 <style scoped>
-.about-info {
+/* .about-info {
     background-image: url("../../../public/images/background-image5.png");
+} */
+.about-logo {
+    display: flex;
+    left: 12%;
+    top: 0%;
+    width: 300px;
+    position: absolute;
+}
+h1 {
+    margin-top: 100px;
+    margin-bottom: 100px;
 }
 .single-blog-post .video-content {
     margin: 20px 0;
@@ -72,5 +101,8 @@ export default {};
 .single-blog-post .about-text li {
     font-weight: 300;
     margin-bottom: 20px;
+}
+.about-writers {
+    margin: 40px;
 }
 </style>

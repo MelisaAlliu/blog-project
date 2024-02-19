@@ -1,6 +1,5 @@
 <template>
     <div id="wrapper">
-        <!-- Sidebar -->
         <div
             class="sidebar fixed top-0 left-0 h-screen transition-all duration-500"
             :class="{
@@ -17,16 +16,17 @@
 
             <div class="logo mt-12 ml-10">
                 <img
-                    src="../../public/images/image-4.png"
+                    src="../../public/images/logo.png"
                     alt="Brain connectd wiht heart"
-                    class="w-150 h-auto"
+                    class="w-150 h-auto pr-8"
                 />
             </div>
 
             <div class="side-links mt-10 ml-10">
-                <ul>
+                <ul class="navigation-links">
                     <li class="my-8 mx-8">
                         <router-link
+                            @click="closeOverlay"
                             :to="{ name: 'Home' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
@@ -37,7 +37,7 @@
                     <li class="my-8 mx-8">
                         <router-link
                             @click="closeOverlay"
-                            to="blog"
+                            :to="{ name: 'Blog' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
                             <span class="material-symbols-outlined"
@@ -48,7 +48,7 @@
                     <li class="my-8 mx-8">
                         <router-link
                             @click="closeOverlay"
-                            to="about"
+                            :to="{ name: 'About' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
                             <span class="material-symbols-outlined">help</span
@@ -58,7 +58,7 @@
                     <li class="my-8 mx-8">
                         <router-link
                             @click="closeOverlay"
-                            to="contact"
+                            :to="{ name: 'Contact' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
                             <span class="material-symbols-outlined">call</span
@@ -68,7 +68,7 @@
                     <li v-if="!loggedIn" class="my-8 mx-8">
                         <router-link
                             @click="closeOverlay"
-                            to="login"
+                            :to="{ name: 'Login' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
                             <span class="material-symbols-outlined"
@@ -79,7 +79,7 @@
                     <li v-if="!loggedIn" class="my-8 mx-8">
                         <router-link
                             @click="closeOverlay"
-                            to="register"
+                            :to="{ name: 'Register' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
                             <span class="material-symbols-outlined"
@@ -90,7 +90,7 @@
                     <li v-if="loggedIn" class="my-8 mx-8">
                         <router-link
                             @click="closeOverlay"
-                            to="dashboard"
+                            :to="{ name: 'Dashboard' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
                             <span class="material-symbols-outlined"
@@ -100,17 +100,6 @@
                     </li>
                 </ul>
             </div>
-
-            <footer
-                class="sidebar-footer absolute bottom-10 left-0 w-full mt-auto text-white text-center"
-            >
-                <div class="mt-10 space-x-4">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                </div>
-                <small></small>
-            </footer>
         </div>
 
         <div
@@ -123,8 +112,24 @@
         </div>
 
         <main class="container">
-            <router-view @update-sidebar="updateSidebar"></router-view>
+            <router-view
+                @update-sidebar="updateSidebar"
+                @show-edit-success="showEditSuccess"
+                :editSuccess="editSuccess"
+                :key="$route.path"
+            ></router-view>
         </main>
+
+        <footer class="main-footer py-10 w-full mt-auto text-white text-center">
+            <div>
+                <a href=""><i class="fab fa-facebook-f"></i></a>
+                &nbsp;
+                <a href=""><i class="fab fa-instagram"></i></a>
+                &nbsp;
+                <a href=""><i class="fab fa-twitter"></i></a>
+            </div>
+            <small>@MindfulHeartbeat.com</small>
+        </footer>
     </div>
 </template>
 
@@ -135,6 +140,7 @@ export default {
         return {
             overlayVisibility: false,
             loggedIn: false,
+            editSuccess: false,
         };
     },
     methods: {
@@ -146,6 +152,9 @@ export default {
         },
         updateSidebar() {
             this.loggedIn = !this.loggedIn;
+        },
+        showEditSuccess() {
+            this.editSuccess = true;
         },
     },
     mounted() {
@@ -159,6 +168,9 @@ export default {
 </script>
 
 <style scoped>
+.main-footer {
+    background-color: #111;
+}
 .sidebar {
     overflow-x: hidden;
     transition: width 0.5s;
@@ -170,7 +182,7 @@ export default {
 }
 @media (min-width: 768px) {
     .sidebar {
-        width: 300px;
+        width: 200px;
     }
 }
 
@@ -178,6 +190,7 @@ export default {
     img {
         width: 250px;
         height: auto;
+        margin: auto;
     }
 }
 </style>

@@ -2,22 +2,31 @@
     <div class="categories-list">
         <h1>Posts List</h1>
         <!-- success message -->
-        <div class="success-msg">
+        <div class="success-msg" v-if="success">
             <i class="fa fa-check"></i>
             Post deleted successfully
         </div>
-        <div class="success-msg">
+        <div class="success-msg" v-if="editSuccess">
             <i class="fa fa-check"></i>
             Post edited successfully
         </div>
-        <div class="item">
-            <span>Test</span>
-            <p>Test</p>
+        <div class="item" v-for="(post, index) in posts" :key="post.id">
+            <span>{{ index + 1 }}.</span>
+            <p>{{ post.title }}</p>
             <div>
-                <router-link class="edit-link">Edit</router-link>
+                <router-link
+                    class="edit-link"
+                    :to="{ name: 'EditPosts', params: { slug: post.slug } }"
+                    >Edit</router-link
+                >
             </div>
 
-            <input type="button" value="Delete" class="delete-btn" />
+            <input
+                type="button"
+                value="Delete"
+                class="delete-btn"
+                @click="destroy(post.slug)"
+            />
         </div>
         <div class="index-categories">
             <router-link :to="{ name: 'CreatePosts' }"
@@ -27,7 +36,45 @@
     </div>
 </template>
 <script>
-export default {};
+export default {
+    props: ["editSuccess"],
+    emits: ["updateSidebar"],
+    data() {
+        return {
+            posts: [],
+            success: false,
+        };
+    },
+    methods: {
+        destroy(slug) {
+            axios
+                .delete(`/api/posts/${slug}`)
+                .then(() => {
+                    this.fetchPosts();
+                    this.success = true;
+                    setTimeout(() => {
+                        this.success = false;
+                    }, 2500);
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                });
+        },
+
+        fetchPosts() {
+            axios
+                .get("/api/dashboard-posts")
+                .then((response) => (this.posts = response.data.data))
+                .catch((error) => {
+                    console.log(error);
+                });
+        },
+    },
+
+    mounted() {
+        this.fetchPosts();
+    },
+};
 </script>
 
 <style scoped>

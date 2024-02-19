@@ -1,7 +1,7 @@
 <template>
     <div
         id="backend-view"
-        class="text-center bg-cover bg-center h-screen relative"
+        class="dashboard-wrapper text-center bg-cover bg-center h-screen relative"
     >
         <div class="logout absolute top-5 right-5">
             <a href="#" @click="logout" class="text-white">Log out</a>
@@ -14,7 +14,7 @@
             <ul>
                 <li>
                     <router-link
-                        to="/create-posts"
+                        to="/posts/create"
                         class="text-blue-500 text-lg"
                     >
                         Create Posts</router-link
@@ -22,7 +22,7 @@
                 </li>
                 <li>
                     <router-link
-                        to="dashboard-posts"
+                        :to="{ name: 'DashboardPostsList' }"
                         class="text-blue-500 text-lg"
                     >
                         Posts list</router-link
