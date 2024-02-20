@@ -71,7 +71,7 @@
     </section>
 </template>
 
-<script>
+<script lang="ts">
 import AboutWritersPage from "./AboutWritersPage.vue";
 export default {
     components: {

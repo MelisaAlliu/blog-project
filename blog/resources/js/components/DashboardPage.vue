@@ -46,8 +46,13 @@
     </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+import axios from "axios";
+import { AxiosResponse } from "axios";
+import { RouterLink } from "vue-router";
+
+export default defineComponent({
     data() {
         return {
             name: "",
@@ -56,10 +61,10 @@ export default {
     mounted() {
         axios
             .get("/api/user")
-            .then((response) => {
+            .then((response: AxiosResponse<{ name: string }>) => {
                 this.name = response.data.name;
             })
-            .catch((error) => {
+            .catch((error: any) => {
                 if (error.response.status === 401) {
                     this.$emit("updateSidebar");
                     localStorage.removeItem("authenticated");
@@ -76,12 +81,15 @@ export default {
                     localStorage.removeItem("authenticated");
                     this.$emit("updateSidebar");
                 })
-                .catch((error) => {
+                .catch((error: any) => {
                     console.log(error);
                 });
         },
     },
-};
+    components: {
+        RouterLink,
+    },
+});
 </script>
 
 <style scoped>

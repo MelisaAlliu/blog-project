@@ -111,13 +111,15 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach((to, from) => {
+router.beforeEach((to, from, next) => {
     const authenticatedUser = localStorage.getItem("authenticated");
 
     if (to.meta.requestGuest && authenticatedUser) {
-        return { name: "Dashboard" };
+        next({ name: "Dashboard" });
     } else if (to.meta.requestAuth && !authenticatedUser) {
-        return { name: "Login" };
+        next({ name: "Login" });
+    } else {
+        next();
     }
 });
 export default router;

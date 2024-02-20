@@ -35,18 +35,25 @@
         </div>
     </div>
 </template>
-<script>
-export default {
-    props: ["editSuccess"],
+
+<script lang="ts">
+import { defineComponent, PropType } from "vue";
+import axios from "axios";
+import { Post } from "../interfaces/Post";
+
+export default defineComponent({
+    props: {
+        editSuccess: Boolean as PropType<boolean>,
+    },
     emits: ["updateSidebar"],
     data() {
         return {
-            posts: [],
+            posts: [] as Post[],
             success: false,
         };
     },
     methods: {
-        destroy(slug) {
+        destroy(slug: string) {
             axios
                 .delete(`/api/posts/${slug}`)
                 .then(() => {
@@ -74,7 +81,7 @@ export default {
     mounted() {
         this.fetchPosts();
     },
-};
+});
 </script>
 
 <style scoped>

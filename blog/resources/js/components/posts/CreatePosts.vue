@@ -3,15 +3,12 @@
         <div class="container">
             <DashboardButton />
             <h1>Create Posts!</h1>
-            <!-- success message -->
             <div class="success-msg" v-if="success">
                 <i class="fa fa-check"></i>
                 Post created successfully
             </div>
-            <!-- Contact Form -->
             <div class="contact-form">
                 <form @submit.prevent="submit">
-                    <!-- Title -->
                     <label for="title"><span>Title</span></label>
                     <input type="text" id="title" v-model="fields.title" />
                     <span v-if="errors.title" class="error">{{
@@ -19,7 +16,6 @@
                     }}</span>
                     <br />
 
-                    <!-- Image -->
                     <label for="image"><span>Image</span></label>
                     <input type="file" id="image" @input="grabFile" />
                     <span v-if="errors.file" class="error">{{
@@ -30,7 +26,6 @@
                     </div>
                     <br />
 
-                    <!-- Drop down -->
                     <label for="categories"
                         ><span>Choose a category:</span></label
                     >
@@ -49,13 +44,12 @@
                     }}</span>
                     <br />
 
-                    <!-- Body-->
                     <label for="body"><span>Body</span></label>
                     <textarea id="body" v-model="fields.body"></textarea>
                     <span v-if="errors.body" class="error">{{
                         errors.body[0]
                     }}</span>
-                    <!-- Button -->
+
                     <input class="add-post-btn" type="submit" value="Submit" />
                 </form>
             </div>
@@ -63,9 +57,14 @@
     </main>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent, Ref, ref } from "vue";
+import axios from "axios";
 import DashboardButton from "../DashboardButton.vue";
-export default {
+import { Errors } from "../interfaces/Errors";
+import { Category } from "../interfaces/Category";
+
+export default defineComponent({
     components: {
         DashboardButton,
     },
@@ -74,30 +73,44 @@ export default {
             success: false,
             fields: {
                 category_id: "",
+                title: "",
+                file: null as File | null,
+                body: "",
             },
-            errors: {},
+            errors: {} as Errors,
             url: "",
-            categories: [],
+            categories: [] as Category[],
         };
     },
-
     methods: {
-        grabFile(e) {
-            const file = e.target.files[0];
-            this.fields.file = file;
-            this.url = URL.createObjectURL(file);
-            URL.revokeObjectURL(file);
+        grabFile(e: Event) {
+            const file = (e.target as HTMLInputElement).files?.[0];
+            if (file) {
+                this.fields.file = file;
+                this.url = URL.createObjectURL(file);
+            }
         },
-
         submit() {
+            const formData = new FormData();
+            for (const key in this.fields) {
+                if (key === "file" && !this.fields.file) continue;
+                formData.append(
+                    key,
+                    this.fields[key as keyof typeof this.fields] as
+                        | string
+                        | Blob
+                );
+            }
             axios
-                .post("/api/posts", this.fields, {
-                    headers: { "content-type": "multipart/form-data" },
-                })
+                .post("/api/posts", formData)
                 .then(() => {
-                    this.fields = {};
-                    this.url = null;
-                    this.fields.category_id = "";
+                    this.fields = {
+                        category_id: "",
+                        title: "",
+                        file: null,
+                        body: "",
+                    };
+                    this.url = "";
                     this.success = true;
                     this.errors = {};
                     setTimeout(() => {
@@ -111,7 +124,6 @@ export default {
                 });
         },
     },
-
     mounted() {
         axios
             .get("/api/categories")
@@ -120,7 +132,7 @@ export default {
                 console.log(error);
             });
     },
-};
+});
 </script>
 
 <style scoped>

@@ -34,31 +34,33 @@
         </section>
     </div>
 </template>
-
-<script>
-import CaruselApp from "./library/CaruselApp.vue";
+<script lang="ts">
+import { defineComponent } from "vue";
 import axios from "axios";
 import HomePageHeader from "./HomePageHeader.vue";
-export default {
+import CaruselApp from "./library/CaruselApp.vue";
+import { Post } from "./interfaces/Post";
+
+export default defineComponent({
     components: {
-        CaruselApp,
         HomePageHeader,
+        CaruselApp,
     },
     emits: ["updateSidebar"],
     data() {
         return {
-            posts: [],
+            posts: [] as Post[],
         };
     },
     mounted() {
         axios
-            .get("/api/home-posts")
+            .get<{ data: Post[] }>("/api/home-posts")
             .then((response) => (this.posts = response.data.data))
             .catch((error) => {
                 console.log(error);
             });
     },
-};
+});
 </script>
 
 <style scoped>
@@ -70,6 +72,7 @@ export default {
     width: 100%;
     height: 400px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 section {

@@ -94,6 +94,31 @@ section {
     --rotation: 20deg;
 }
 
+.main-footer {
+    background-color: #111;
+}
+
+.card-blog-content {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-blog-content:hover {
+    transform: scale(1.05);
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    img {
+        width: 250px;
+        height: auto;
+        margin: auto;
+    }
+}
 @media (max-width: 768px) {
     .sidebar {
         width: 0;
@@ -169,7 +194,7 @@ section {
     .dashboard-wrapper,
     .login-wrapper,
     .register-wrapper,
-    section,
+    .latest-blog,
     .header-title {
         width: 1710px;
     }

@@ -46,13 +46,19 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
 import axios from "axios";
-export default {
+import { AxiosResponse } from "axios";
+import { RouterLink } from "vue-router";
+import { Fields } from "./interfaces/Fields";
+import { Errors } from "./interfaces/Errors";
+
+export default defineComponent({
     data() {
         return {
-            fields: {},
-            errors: {},
+            fields: {} as Fields,
+            errors: {} as Errors,
         };
     },
     methods: {
@@ -64,12 +70,12 @@ export default {
                     localStorage.setItem("authenticated", "true");
                     this.$emit("updateSidebar");
                 })
-                .catch((error) => {
+                .catch((error: any) => {
                     this.errors = error.response.data.errors;
                 });
         },
     },
-};
+});
 </script>
 
 <style scoped>

@@ -62,14 +62,19 @@
         </form>
     </div>
 </template>
-
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
 import axios from "axios";
-export default {
+import { AxiosError } from "axios";
+import { RouterLink } from "vue-router";
+import { Fields } from "./interfaces/Fields";
+import { Errors } from "./interfaces/Errors";
+
+export default defineComponent({
     data() {
         return {
-            fields: {},
-            errors: {},
+            fields: {} as Fields,
+            errors: {} as Errors,
         };
     },
     methods: {
@@ -79,12 +84,15 @@ export default {
                 .then(() => {
                     this.$router.push({ name: "Dashboard" });
                 })
-                .catch((error) => {
+                .catch((error: any) => {
                     this.errors = error.response.data.errors;
                 });
         },
     },
-};
+    components: {
+        RouterLink,
+    },
+});
 </script>
 
 <style scoped>

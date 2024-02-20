@@ -25,52 +25,60 @@
         </div>
     </div>
 </template>
+<script lang="ts">
+import { defineComponent } from "vue";
+import axios from "axios";
+import { Fields } from "../interfaces/Fields";
+import { Errors } from "../interfaces/Errors";
 
-<script>
-export default {
-    props: ["id"],
+export default defineComponent({
+    props: {
+        id: Number,
+    },
     data() {
         return {
-            field: {},
-            errors: {},
+            field: {} as Fields,
+            errors: {} as Errors,
             success: false,
         };
     },
     methods: {
         submit() {
             axios
-                .put("/api/categories/" + this.id, this.field)
+                .put(`/api/categories/${this.id}`, this.field)
                 .then(() => {
-                    this.field = {};
-                    this.errors = {};
+                    this.field = Object.assign({}, this.field);
+                    this.errors = {} as Errors;
                     this.success = true;
                     this.$emit("categoryEdited");
-                    setInterval(() => {
+                    setTimeout(() => {
                         this.success = false;
                     }, 2500);
-
                     this.$router.push({ name: "CategoriesList" });
                 })
                 .catch((error) => {
                     this.errors = error.response.data.errors;
                 });
         },
+        fetchCategory() {
+            axios
+                .get(`/api/categories/${this.id}`)
+                .then((response) => {
+                    this.field = response.data;
+                })
+                .catch((error) => {
+                    if (error.response.status === 401) {
+                        this.$emit("updateSidebar");
+                        localStorage.removeItem("authenticated");
+                        this.$router.push({ name: "Login" });
+                    }
+                });
+        },
     },
     mounted() {
-        axios
-            .get("/api/categories/" + this.id)
-            .then((response) => {
-                this.field = response.data;
-            })
-            .catch((error) => {
-                if (error.response.status === 401) {
-                    this.$emit("updateSidebar");
-                    localStorage.removeItem("authenticated");
-                    this.$router.push({ name: "Login" });
-                }
-            });
+        this.fetchCategory();
     },
-};
+});
 </script>
 
 <style scoped>

@@ -39,7 +39,7 @@
             </ul>
         </div>
 
-        <section class="cards-blog latest-blog grid grid-cols-3 gap-12 mx-12">
+        <section class="cards-blog grid grid-cols-3 gap-12 mx-12">
             <div class="card-blog-content" v-for="post in posts" :key="post.id">
                 <img :src="`/${post.imagePath}`" alt="" class="card-image" />
                 <p class="mt-4">
@@ -78,19 +78,25 @@
     </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+import axios from "axios";
+import { Post } from "./interfaces/Post";
+import { Category } from "./interfaces/Category";
+import { Link } from "./interfaces/Link";
+
+export default defineComponent({
     emits: ["updateSidebar"],
     data() {
         return {
-            posts: [],
-            categories: [],
+            posts: [] as Post[],
+            categories: [] as Category[],
             title: "",
-            links: [],
+            links: [] as Link[],
         };
     },
     methods: {
-        filterByCategory(name) {
+        filterByCategory(name: string) {
             axios
                 .get("/api/posts", {
                     params: {
@@ -105,20 +111,20 @@ export default {
                     console.log(error);
                 });
         },
-
-        changePage(url) {
-            axios
-                .get(url)
-                .then((response) => {
-                    this.posts = response.data.data;
-                    this.links = response.data.meta.links;
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+        changePage(url: string | null) {
+            if (url !== null) {
+                axios
+                    .get(url)
+                    .then((response) => {
+                        this.posts = response.data.data;
+                        this.links = response.data.meta.links;
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
         },
     },
-
     watch: {
         title() {
             axios
@@ -141,7 +147,6 @@ export default {
             .get("/api/posts")
             .then((response) => {
                 this.posts = response.data.data;
-                console.log(response.data.meta.links);
                 this.links = response.data.meta.links;
             })
             .catch((error) => {
@@ -150,12 +155,14 @@ export default {
 
         axios
             .get("/api/categories")
-            .then((response) => (this.categories = response.data))
+            .then((response) => {
+                this.categories = response.data;
+            })
             .catch((error) => {
                 console.log(error);
             });
     },
-};
+});
 </script>
 
 <style scoped>

@@ -62,40 +62,52 @@
     </main>
 </template>
 
-<script>
-export default {
-    props: ["slug"],
+<script lang="ts">
+import axios from "axios";
+import { defineComponent, PropType } from "vue";
+import { Category } from "../interfaces/Category";
+import { PostFields } from "../interfaces/PostFields";
+import { Errors } from "../interfaces/Errors";
+
+export default defineComponent({
+    props: {
+        slug: {
+            type: String as PropType<string>,
+            required: true,
+        },
+    },
     data() {
         return {
             success: false,
             fields: {
+                title: "",
                 category_id: "",
-            },
-            errors: {},
+                body: "",
+            } as PostFields,
+            errors: {} as Errors,
             url: "",
-            categories: [],
+            categories: [] as Category[],
         };
     },
-
     methods: {
-        grabFile(e) {
-            const file = e.target.files[0];
-            this.fields.file = file;
-            this.url = URL.createObjectURL(file);
-            URL.revokeObjectURL(file);
+        grabFile(e: Event) {
+            const file = (e.target as HTMLInputElement).files?.[0];
+            if (file) {
+                this.fields.file = file;
+                this.url = URL.createObjectURL(file);
+                URL.revokeObjectURL(this.url);
+            }
         },
-
         submit() {
             const fd = new FormData();
-            fd.append("title", this.fields.title);
-            fd.append("category_id", this.fields.category_id);
-            if (this.fields.file) {
-                fd.append("file", this.fields.file);
-            }
-            fd.append("body", this.fields.body);
-
+            Object.entries(this.fields).forEach(([key, value]) => {
+                if (key === "file" && value instanceof File) {
+                    fd.append("file", value);
+                } else {
+                    fd.append(key, value as string);
+                }
+            });
             fd.append("_method", "PUT");
-
             axios
                 .post(`/api/posts/${this.slug}`, fd, {
                     headers: {
@@ -103,40 +115,40 @@ export default {
                     },
                 })
                 .then((res) => {
-                    this.$emit("showEditSuccess");
-
+                    this.success = true;
                     this.$router.push({ name: "DashboardPostsList" });
                 })
                 .catch((error) => {
-                    this.errors = error.response.data.errors;
+                    this.errors = error.response.data.errors || {};
                     if (error.response.status === 403) {
                         this.$router.push({ name: "DashboardPostsList" });
                     }
                 });
         },
     },
-
     mounted() {
         axios
             .get("/api/categories")
-            .then((response) => (this.categories = response.data))
+            .then((response) => {
+                this.categories = response.data || [];
+            })
             .catch((error) => {
                 console.log(error);
             });
-
         axios
-            .get("/api/posts/" + this.slug)
+            .get(`/api/posts/${this.slug}`)
             .then((response) => {
-                this.fields = response.data.data;
-                this.url = "/" + response.data.data.imagePath;
+                this.fields = response.data.data || {};
+                this.url = "/" + (response.data.data?.imagePath || "");
             })
             .catch((error) => {
-                if (error.response.status === 403) {
+                console.log(error);
+                if (error.response && error.response.status === 403) {
                     this.$router.push({ name: "DashboardPostsList" });
                 }
             });
     },
-};
+});
 </script>
 
 <style scoped>

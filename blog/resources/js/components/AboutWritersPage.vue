@@ -3,7 +3,7 @@
         <div class="writers">
             <img
                 class="logo"
-                src="../../../public/images/writer-logo3.png"
+                src="../../../public/images/writer-logo-1.PNG"
                 alt=""
             />
             <img
@@ -21,7 +21,7 @@
         <div class="writers">
             <img
                 class="logo"
-                src="../../../public/images/writer-logo3.png"
+                src="../../../public/images/writer-logo-2.PNG"
                 alt=""
             />
             <img
@@ -39,7 +39,7 @@
         <div class="writers">
             <img
                 class="logo"
-                src="../../../public/images/writer-logo3.png"
+                src="../../../public/images/writer-logo-3.png"
                 alt=""
             />
             <img
@@ -57,7 +57,7 @@
         <div class="writers">
             <img
                 class="logo"
-                src="../../../public/images/writer-logo3.png"
+                src="../../../public/images/writer-logo-4.png"
                 alt=""
             />
             <img
@@ -74,7 +74,7 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {};
 </script>
 
@@ -94,6 +94,7 @@ body {
 }
 img {
     max-width: 100%;
+    border-radius: 20px;
 }
 
 .logo,

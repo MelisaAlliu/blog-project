@@ -46,24 +46,28 @@
         </div>
     </div>
 </template>
+<script lang="ts">
+import { defineComponent } from "vue";
+import axios from "axios";
+import { Category } from "../interfaces/Category";
 
-<script>
-export default {
-    props: ["editSuccess"],
+export default defineComponent({
+    props: {
+        editSuccess: Boolean,
+    },
     data() {
         return {
-            categories: [],
+            categories: [] as Category[],
             success: false,
         };
     },
-
     methods: {
-        destroy(id) {
+        destroy(id: number) {
             axios
-                .delete("/api/categories/" + id)
+                .delete(`/api/categories/${id}`)
                 .then(() => {
                     this.success = true;
-                    setInterval(() => {
+                    setTimeout(() => {
                         this.success = false;
                     }, 2500);
                     this.fetchCategories();
@@ -84,7 +88,7 @@ export default {
     mounted() {
         this.fetchCategories();
     },
-};
+});
 </script>
 
 <style scoped>
@@ -94,15 +98,10 @@ export default {
 
 .categories-list .item {
     display: flex;
-    /* justify-content: space-around; */
     align-items: center;
     max-width: 600px;
     margin: 0 auto !important;
 }
-
-/* .categories-list .item p {
-    font-size: 16px;
-} */
 
 .categories-list .item p,
 .categories-list .item div,

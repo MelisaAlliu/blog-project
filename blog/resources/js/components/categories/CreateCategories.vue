@@ -36,28 +36,30 @@
         </div>
     </div>
 </template>
-
-<script>
+<script lang="ts">
+import { defineComponent } from "vue";
 import axios from "axios";
-export default {
+import { Fields } from "../interfaces/Fields";
+import { Errors } from "../interfaces/Errors";
+
+export default defineComponent({
     data() {
         return {
-            field: {},
-            errors: {},
+            field: {} as Fields,
+            errors: {} as Errors,
             success: false,
         };
     },
-
     methods: {
         submit() {
             axios
                 .post("/api/categories/create", this.field)
                 .then(() => {
-                    this.field = {};
-                    this.errors = {};
+                    this.field = Object.assign({}, this.field);
+                    this.errors = {} as Errors;
                     this.success = true;
 
-                    setInterval(() => {
+                    setTimeout(() => {
                         this.success = false;
                     }, 2500);
                 })
@@ -66,7 +68,7 @@ export default {
                 });
         },
     },
-};
+});
 </script>
 
 <style scoped>

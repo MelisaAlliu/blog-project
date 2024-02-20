@@ -133,8 +133,11 @@
     </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from "vue";
+import { RouteLocationNormalizedLoaded, useRoute } from "vue-router";
+
+export default defineComponent({
     name: "App",
     data() {
         return {
@@ -164,13 +167,15 @@ export default {
             this.loggedIn = false;
         }
     },
-};
+    computed: {
+        $route(): RouteLocationNormalizedLoaded {
+            return useRoute();
+        },
+    },
+});
 </script>
 
 <style scoped>
-.main-footer {
-    background-color: #111;
-}
 .sidebar {
     overflow-x: hidden;
     transition: width 0.5s;
@@ -179,18 +184,5 @@ export default {
 .showOverlay {
     width: 100%;
     z-index: 5;
-}
-@media (min-width: 768px) {
-    .sidebar {
-        width: 200px;
-    }
-}
-
-@media (max-width: 768px) {
-    img {
-        width: 250px;
-        height: auto;
-        margin: auto;
-    }
 }
 </style>
