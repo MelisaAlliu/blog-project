@@ -4,7 +4,7 @@
             <HomePageHeader />
         </header>
 
-        <section>
+        <section class="carusel-section">
             <CaruselApp />
         </section>
 
@@ -14,22 +14,25 @@
 
         <section class="cards-blog latest-blog grid grid-cols-2 gap-12">
             <div class="card-blog-content" v-for="post in posts" :key="post.id">
-                <img :src="post.imagePath" alt="" class="card-image" />
-                <p class="mt-4 mb-2 text-sm">
-                    {{ post.created_at }}
-                    <span class="float-right">Written By {{ post.user }}</span>
-                </p>
-                <h4 class="font-bold text-xl">
-                    <router-link
-                        :to="{
-                            name: 'SinglePage',
-                            params: {
-                                slug: post.slug,
-                            },
-                        }"
-                        >{{ post.title }}</router-link
-                    >
-                </h4>
+                <router-link
+                    :to="{
+                        name: 'SinglePage',
+                        params: {
+                            slug: post.slug,
+                        },
+                    }"
+                >
+                    <img :src="post.imagePath" alt="" class="card-image" />
+                    <p class="mt-4 mb-2 text-sm">
+                        {{ post.created_at }}
+                        <span class="float-right"
+                            >Written By {{ post.user }}</span
+                        >
+                    </p>
+                    <h4 class="font-bold text-xl">
+                        {{ post.title }}
+                    </h4></router-link
+                >
             </div>
         </section>
     </div>
@@ -37,9 +40,9 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import axios from "axios";
-import HomePageHeader from "./HomePageHeader.vue";
-import CaruselApp from "./library/CaruselApp.vue";
-import { Post } from "./interfaces/Post";
+import HomePageHeader from "./helper-components/HomePageHeader.vue";
+import CaruselApp from "../library/CaruselApp.vue";
+import { Post } from "../interfaces/Post";
 
 export default defineComponent({
     components: {

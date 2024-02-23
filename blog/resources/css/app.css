@@ -83,12 +83,6 @@ section {
     color: red;
 }
 
-.side-links {
-    display: flex;
-    justify-content: center;
-    margin-right: 35px;
-}
-
 :root {
     --timing: 400ms;
     --rotation: 20deg;
@@ -96,6 +90,7 @@ section {
 
 .main-footer {
     background-color: #111;
+    bottom: 0;
 }
 
 .card-blog-content {
@@ -106,19 +101,29 @@ section {
     transform: scale(1.05);
 }
 
-@media (min-width: 768px) {
-    .sidebar {
-        width: 200px;
-    }
+.single-blog-post .video-content {
+    margin: 20px 0;
+}
+.single-blog-post .about-text li {
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+.about-writers {
+    margin: 40px;
 }
 
-@media (max-width: 768px) {
-    img {
-        width: 250px;
-        height: auto;
-        margin: auto;
-    }
+.about-logo {
+    display: flex;
+    right: 30%;
+    top: 0%;
+    width: 300px;
+    position: absolute;
 }
+
+.fa-solid {
+    margin-right: 5px;
+}
+
 @media (max-width: 768px) {
     .sidebar {
         width: 0;
@@ -195,7 +200,10 @@ section {
     .login-wrapper,
     .register-wrapper,
     .latest-blog,
-    .header-title {
+    .header-title,
+    .carusel-section,
+    .create-post,
+    .categories-list {
         width: 1710px;
     }
 }

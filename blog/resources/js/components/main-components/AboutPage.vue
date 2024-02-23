@@ -2,7 +2,7 @@
     <section class="single-blog-post">
         <img
             class="about-logo"
-            src="../../../public/images/about-logo.png"
+            src="../../../public/images/about-logo-2.png"
             alt=""
         />
         <h1 class="text-3xl font-bold mb-6 mt-6 text-center">
@@ -19,7 +19,7 @@
         <div class="video-content flex justify-center" data-aos="fade-left">
             <video class="max-w-[940px] h-auto" autoplay loop muted>
                 <source
-                    src="../../../public/images/video1.mp4"
+                    src="../../../../public/images/video1.mp4"
                     type="video/mp4"
                 />
                 Your browser does not support the video tag.
@@ -72,7 +72,7 @@
 </template>
 
 <script lang="ts">
-import AboutWritersPage from "./AboutWritersPage.vue";
+import AboutWritersPage from "./helper-components/AboutWritersPage.vue";
 export default {
     components: {
         AboutWritersPage,
@@ -81,28 +81,8 @@ export default {
 </script>
 
 <style scoped>
-/* .about-info {
-    background-image: url("../../../public/images/background-image5.png");
-} */
-.about-logo {
-    display: flex;
-    left: 12%;
-    top: 0%;
-    width: 300px;
-    position: absolute;
-}
 h1 {
     margin-top: 100px;
     margin-bottom: 100px;
-}
-.single-blog-post .video-content {
-    margin: 20px 0;
-}
-.single-blog-post .about-text li {
-    font-weight: 300;
-    margin-bottom: 20px;
-}
-.about-writers {
-    margin: 40px;
 }
 </style>

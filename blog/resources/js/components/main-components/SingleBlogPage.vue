@@ -15,7 +15,7 @@
             <img
                 :src="`/${post.imagePath}`"
                 alt=""
-                class="h-[50vh] object-cover w-full"
+                class="sigle-blog-post-image h-[70vh] object-cover w-full"
             />
         </div>
 
@@ -31,12 +31,6 @@
             v-for="relatedPost in relatedPosts"
             :key="relatedPost.id"
         >
-            <img
-                :src="`/${relatedPost.imagePath}`"
-                alt=""
-                loading="lazy"
-                class="card-image"
-            />
             <router-link
                 :to="{
                     name: 'SinglePage',
@@ -45,6 +39,13 @@
                     },
                 }"
             >
+                <img
+                    :src="`/${relatedPost.imagePath}`"
+                    alt=""
+                    loading="lazy"
+                    class="card-image"
+                />
+
                 <h4 class="text-xl font-semibold">
                     {{ relatedPost.title }}
                 </h4></router-link
@@ -86,8 +87,9 @@ export default {
 <style scoped>
 .card-image {
     width: 100%;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
+    border-radius: 10px;
 }
 .single-blog-post p {
     font-size: 16px;

@@ -60,9 +60,9 @@
 <script lang="ts">
 import { defineComponent, Ref, ref } from "vue";
 import axios from "axios";
-import DashboardButton from "../DashboardButton.vue";
 import { Errors } from "../interfaces/Errors";
 import { Category } from "../interfaces/Category";
+import DashboardButton from "../main-components/helper-components/DashboardButton.vue";
 
 export default defineComponent({
     components: {
@@ -139,6 +139,7 @@ export default defineComponent({
 .create-post {
     background-color: #fff;
     padding: 0 3vw;
+    min-height: 100vh;
 }
 .container input,
 textarea,

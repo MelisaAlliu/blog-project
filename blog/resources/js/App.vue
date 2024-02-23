@@ -30,8 +30,7 @@
                             :to="{ name: 'Home' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
-                            <span class="material-symbols-outlined">home</span
-                            >Home
+                            <i class="fa-solid fa-house"></i>Home
                         </router-link>
                     </li>
                     <li class="my-8 mx-8">
@@ -40,9 +39,7 @@
                             :to="{ name: 'Blog' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
-                            <span class="material-symbols-outlined"
-                                >diversity_2</span
-                            >Blog
+                            <i class="fa-solid fa-blog"></i>Blog
                         </router-link>
                     </li>
                     <li class="my-8 mx-8">
@@ -51,8 +48,7 @@
                             :to="{ name: 'About' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
-                            <span class="material-symbols-outlined">help</span
-                            >About
+                            <i class="fa-solid fa-address-card"></i>About
                         </router-link>
                     </li>
                     <li class="my-8 mx-8">
@@ -61,8 +57,7 @@
                             :to="{ name: 'Contact' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
-                            <span class="material-symbols-outlined">call</span
-                            >Contact
+                            <i class="fa-solid fa-phone"></i>Contact
                         </router-link>
                     </li>
                     <li v-if="!loggedIn" class="my-8 mx-8">
@@ -71,9 +66,7 @@
                             :to="{ name: 'Login' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
-                            <span class="material-symbols-outlined"
-                                >passkey</span
-                            >Login
+                            <i class="fa-solid fa-right-to-bracket"></i>Login
                         </router-link>
                     </li>
                     <li v-if="!loggedIn" class="my-8 mx-8">
@@ -82,9 +75,7 @@
                             :to="{ name: 'Register' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
-                            <span class="material-symbols-outlined"
-                                >how_to_reg</span
-                            >Register
+                            <i class="fa-solid fa-door-open"></i>Register
                         </router-link>
                     </li>
                     <li v-if="loggedIn" class="my-8 mx-8">
@@ -183,6 +174,26 @@ export default defineComponent({
 }
 .showOverlay {
     width: 100%;
-    z-index: 5;
+    z-index: 1000;
+}
+
+.side-links {
+    display: flex;
+    justify-content: center;
+    margin-right: 35px;
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    img {
+        width: 250px;
+        height: auto;
+        margin: auto;
+    }
 }
 </style>

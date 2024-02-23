@@ -3,72 +3,72 @@
         <div class="writers">
             <img
                 class="logo"
-                src="../../../public/images/writer-logo-1.PNG"
+                src="../../../../../public/images/writer-logo-1.PNG"
                 alt=""
             />
             <img
                 class="front-image"
-                src="../../../public/images/writer-back-image-1.png"
-                alt="yoda holding his lightsabre up, the glow highlighting an angry look on his face"
+                src="../../../../../public/images/writer-back-image-1.png"
+                alt=""
             />
             <img
                 class="bg-image"
-                src="../../../public/images/writer-front-image-1.jpg"
-                alt="yoda looking peaceful on dagobah"
+                src="../../../../../public/images/writer-front-image-1.jpg"
+                alt=""
             />
         </div>
 
         <div class="writers">
             <img
                 class="logo"
-                src="../../../public/images/writer-logo-2.PNG"
+                src="../../../../../public/images/writer-logo-2.PNG"
                 alt=""
             />
             <img
                 class="front-image"
-                src="../../../public/images/writer-back-image-2.png"
-                alt="yoda holding his lightsabre up, the glow highlighting an angry look on his face"
+                src="../../../../../public/images/writer-back-image-2.png"
+                alt=""
             />
             <img
                 class="bg-image"
-                src="../../../public/images/writer-front-image-2.jpg"
-                alt="yoda looking peaceful on dagobah"
+                src="../../../../../public/images/writer-front-image-2.jpg"
+                alt=""
             />
         </div>
 
         <div class="writers">
             <img
                 class="logo"
-                src="../../../public/images/writer-logo-3.png"
+                src="../../../../../public/images/writer-logo-3.png"
                 alt=""
             />
             <img
                 class="front-image"
-                src="../../../public/images/writer-back-image-3.png"
-                alt="yoda holding his lightsabre up, the glow highlighting an angry look on his face"
+                src="../../../../../public/images/writer-back-image-3.png"
+                alt=""
             />
             <img
                 class="bg-image"
-                src="../../../public/images/writer-front-image-3.jpg"
-                alt="yoda looking peaceful on dagobah"
+                src="../../../../../public/images/writer-front-image-3.jpg"
+                alt=""
             />
         </div>
 
         <div class="writers">
             <img
                 class="logo"
-                src="../../../public/images/writer-logo-4.png"
+                src="../../../../../public/images/writer-logo-4.png"
                 alt=""
             />
             <img
                 class="front-image"
-                src="../../../public/images/writer-back-image-4.png"
-                alt="yoda holding his lightsabre up, the glow highlighting an angry look on his face"
+                src="../../../../../public/images/writer-back-image-4.png"
+                alt=""
             />
             <img
                 class="bg-image"
-                src="../../../public/images/writer-front-image-4.jpg"
-                alt="yoda looking peaceful on dagobah"
+                src="../../../../../public/images/writer-front-image-4.jpg"
+                alt=""
             />
         </div>
     </div>

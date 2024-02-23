@@ -18,7 +18,7 @@
     >
         <swiper-slide
             ><img
-                src="../../../../public/images/carusel-image-13.jpg" /></swiper-slide
+                src="../../../../public/images/carusel-image-1.jpg" /></swiper-slide
         ><swiper-slide
             ><img
                 src="../../../../public/images/carusel-image-2.jpg" /></swiper-slide

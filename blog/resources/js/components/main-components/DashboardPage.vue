@@ -108,7 +108,7 @@ export default defineComponent({
 }
 
 #backend-view {
-    background-image: url("../../../public/images/background-image4.jpg");
+    background-image: url("../../../../public/images/background-image4.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;

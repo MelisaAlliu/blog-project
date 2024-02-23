@@ -1,7 +1,6 @@
 <template>
     <div class="categories-list">
         <h1>Posts List</h1>
-        <!-- success message -->
         <div class="success-msg" v-if="success">
             <i class="fa fa-check"></i>
             Post deleted successfully

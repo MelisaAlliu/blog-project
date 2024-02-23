@@ -1,18 +1,18 @@
 import { createRouter, createWebHistory } from "vue-router";
-import AboutPage from "../components/AboutPage.vue";
-import BlogPage from "../components/BlogPage.vue";
-import ContactPage from "../components/ContactPage.vue";
-import HomePage from "../components/HomePage.vue";
-import SingleBlogPage from "../components/SingleBlogPage.vue";
-import LoginPage from "../components/LoginPage.vue";
-import RegisterPage from "../components/RegisterPage.vue";
-import DashboardPage from "../components/DashboardPage.vue";
-import CreateCategories from "../components/categories/CreateCategories.vue";
-import CategoriesList from "../components/categories/CategoriesList.vue";
-import EditCategories from "../components/categories/EditCategories.vue";
-import CreatePosts from "../components/posts/CreatePosts.vue";
-import DashboardPostsList from "../components/posts/DashboardPostsList.vue";
-import EditPosts from "../components/posts/EditPosts.vue";
+import AboutPage from "../components/main-components/AboutPage.vue";
+import BlogPage from "../components/main-components/BlogPage.vue";
+import ContactPage from "../components/main-components/ContactPage.vue";
+import HomePage from "../components/main-components/HomePage.vue";
+import SingleBlogPage from "../components/main-components/SingleBlogPage.vue";
+import LoginPage from "../components/main-components/LoginPage.vue";
+import RegisterPage from "../components/main-components/RegisterPage.vue";
+import DashboardPage from "../components/main-components/DashboardPage.vue";
+import CreateCategories from "../components/category-components/CreateCategories.vue";
+import CategoriesList from "../components/category-components/CategoriesList.vue";
+import EditCategories from "../components/category-components/EditCategories.vue";
+import CreatePosts from "../components/post-components/CreatePosts.vue";
+import DashboardPostsList from "../components/post-components/DashboardPostsList.vue";
+import EditPosts from "../components/post-components/EditPosts.vue";
 
 const routes = [
     {
