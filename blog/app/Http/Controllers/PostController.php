@@ -46,9 +46,6 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        // if (auth()->user()->id !== $post->user->id) {
-        //     return abort(403);
-        // }
         return new PostResource($post);
     }
 
@@ -89,7 +86,6 @@ class PostController extends Controller
             $post->imagePath = $imagePath;
         }
 
-        // create and save post
         $post->title = $title;
         $post->category_id = $category_id;
         $post->slug = $slug;

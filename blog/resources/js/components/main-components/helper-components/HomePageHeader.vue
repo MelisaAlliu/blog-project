@@ -167,9 +167,6 @@ export default {
 }
 
 .des {
-    /* background-image: url("../../../../../public/images/text-background-image-3.png");
-    background-size: cover;
-    background-repeat: no-repeat; */
     padding: 20px;
     z-index: 100;
     background-position: center;

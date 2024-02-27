@@ -41,6 +41,15 @@
                         Categories List</router-link
                     >
                 </li>
+
+                <li>
+                    <router-link
+                        :to="{ name: 'ContactInfo' }"
+                        class="text-blue-500 text-lg"
+                    >
+                        Mesasges List</router-link
+                    >
+                </li>
             </ul>
         </div>
     </div>

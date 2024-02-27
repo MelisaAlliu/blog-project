@@ -2,7 +2,7 @@
     <section class="single-blog-post">
         <img
             class="about-logo"
-            src="../../../public/images/about-logo-2.png"
+            src="../../../../public/images/about-logo-2.png"
             alt=""
         />
         <h1 class="text-3xl font-bold mb-6 mt-6 text-center">

@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import AboutPage from "../components/main-components/AboutPage.vue";
 import BlogPage from "../components/main-components/BlogPage.vue";
 import ContactPage from "../components/main-components/ContactPage.vue";
+import DashboardContactPage from "../components/contact-components/DashboardContactPage.vue";
 import HomePage from "../components/main-components/HomePage.vue";
 import SingleBlogPage from "../components/main-components/SingleBlogPage.vue";
 import LoginPage from "../components/main-components/LoginPage.vue";
@@ -104,6 +105,13 @@ const routes = [
         component: EditPosts,
         meta: { requiresAuth: true },
         props: true,
+    },
+
+    {
+        path: "/contact-info",
+        name: "ContactInfo",
+        component: DashboardContactPage,
+        meta: { requiresAuth: true },
     },
 ];
 const router = createRouter({

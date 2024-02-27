@@ -9,6 +9,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RelatedPostController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ContactController;
 
 
 
@@ -50,4 +51,5 @@ Route::get('posts/{post:slug}', [PostController::class, 'show']);
 Route::get('posts', [PostController::class, 'index']);
 Route::get('related-posts/{post:slug}', [RelatedPostController::class, 'index']);
 Route::get('dashboard-posts', [DashboardController::class, 'index']);
-
+Route::post('contact', [ContactController::class, 'store']);
+Route::get('contact-info', [ContactController::class, 'index']);

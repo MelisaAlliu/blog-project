@@ -91,6 +91,7 @@ section {
 .main-footer {
     background-color: #111;
     bottom: 0;
+    position: relative;
 }
 
 .card-blog-content {
@@ -203,7 +204,8 @@ section {
     .header-title,
     .carusel-section,
     .create-post,
-    .categories-list {
+    .categories-list,
+    .contact-us {
         width: 1710px;
     }
 }
