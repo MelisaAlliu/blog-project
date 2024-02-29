@@ -25,27 +25,29 @@ use App\Http\Controllers\ContactController;
 */
 
 //Private routes
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::middleware('auth:sanctum')->group(function (){
+
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+    
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy']);
+    Route::post('categories/create', [CategoryController::class, 'store']);
+    Route::get('categories/{category}', [CategoryController::class, 'show']);
+    Route::put('categories/{category}', [CategoryController::class, 'update']);
+    Route::delete('categories/{category}', [CategoryController::class, 'destroy']);
+    Route::post('posts', [PostController::class, 'store']);
+    Route::put('posts/{post:slug}', [PostController::class, 'update']);
+    Route::delete('posts/{post:slug}', [PostController::class, 'destroy']);
+    Route::get('contact-info', [ContactController::class, 'index']);
 });
-Route::middleware('auth:sanctum')->post('logout', [AuthenticatedSessionController::class, 'destroy']);
-Route::middleware('auth:sanctum')->post('categories/create', [CategoryController::class, 'store']);
-Route::middleware('auth:sanctum')->get('categories/{category}', [CategoryController::class, 'show']);
-Route::middleware('auth:sanctum')->put('categories/{category}', [CategoryController::class, 'update']);
-Route::middleware('auth:sanctum')->delete('categories/{category}', [CategoryController::class, 'destroy']);
-
-
-Route::middleware('auth:sanctum')->post('posts', [PostController::class, 'store']);
-Route::middleware('auth:sanctum')->put('posts/{post:slug}', [PostController::class, 'update']);
-Route::middleware('auth:sanctum')->delete('posts/{post:slug}', [PostController::class, 'destroy']);
-Route::middleware('auth:sanctum')->get('contact-info', [ContactController::class, 'index']);
 
 
 //Public routes
 Route::post('register', [RegisteredUserController::class, 'store']);
 Route::post('login', [AuthenticatedSessionController::class, 'store']);
 Route::get('categories', [CategoryController::class, 'index']);
-
 Route::get('home-posts', [HomeController::class, 'index']);
 Route::get('posts/{post:slug}', [PostController::class, 'show']);
 Route::get('posts', [PostController::class, 'index']);

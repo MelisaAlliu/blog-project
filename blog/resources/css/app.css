@@ -128,10 +128,31 @@ section {
     top: 0%;
     width: 300px;
     position: absolute;
+    z-index: -1;
 }
 
 .fa-solid {
     margin-right: 5px;
+}
+
+.form-background-view {
+    background-image: url("../../public/images/background-image3.png");
+}
+
+.form {
+    background-color: transparent;
+    margin: 0 auto;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.form * {
+    letter-spacing: 0.5px;
+    outline: none;
+}
+
+.form-button {
+    background-color: #618da8;
 }
 
 @media (max-width: 768px) {
@@ -140,7 +161,7 @@ section {
         overflow: hidden;
     }
 
-    #wrapper {
+    .wrapper {
         margin-left: 0;
     }
 

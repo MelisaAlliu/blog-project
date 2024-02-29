@@ -103,15 +103,15 @@ const routes = [
         path: "/posts/:slug/edit",
         name: "EditPosts",
         component: EditPosts,
-        meta: { requiresAuth: true },
+        meta: { requestAuth: true },
         props: true,
     },
 
     {
         path: "/contact-info",
-        name: "ContactInfo",
+        name: "DashboardContactPage",
         component: DashboardContactPage,
-        meta: { requiresAuth: true },
+        meta: { requestAuth: true },
     },
 ];
 const router = createRouter({

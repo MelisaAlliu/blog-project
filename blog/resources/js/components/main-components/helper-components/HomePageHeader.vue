@@ -173,6 +173,7 @@ export default {
     backdrop-filter: blur(10px);
     background-color: #aa9b72a2;
     border: 1px solid #fff;
+    max-width: 80%;
 }
 .carousel .list .item .content {
     position: absolute;

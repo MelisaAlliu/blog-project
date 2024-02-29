@@ -1,11 +1,10 @@
 <template>
     <div
-        id="backend-view"
-        class="login-wrapper min-h-screen bg-cover bg-center flex items-center"
+        class="form-background-view login-wrapper min-h-screen bg-cover bg-center flex items-center"
     >
         <form
             @submit.prevent="login"
-            class="w-96 bg-white bg-opacity-25 rounded-lg p-8"
+            class="form w-96 bg-white bg-opacity-25 rounded-lg p-8"
         >
             <h3 class="text-2xl text-white font-bold mb-4 text-center">
                 Login Here
@@ -37,7 +36,7 @@
 
             <button
                 type="submit"
-                class="w-full mt-6 text-white font-semibold py-2 px-4 rounded-md"
+                class="form-button w-full mt-6 text-white font-semibold py-2 px-4 rounded-md"
             >
                 <i class="fa-solid fa-right-to-bracket"></i> Log In
             </button>
@@ -81,25 +80,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-#backend-view {
-    background-image: url("../../../../public/images/background-image3.png");
-}
-
-form {
-    background-color: transparent;
-    margin: 0 auto;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
-form * {
-    letter-spacing: 0.5px;
-    outline: none;
-}
-button {
-    background-color: #618da8;
-}
-.error {
-    color: red;
-}
-</style>
+<style scoped></style>

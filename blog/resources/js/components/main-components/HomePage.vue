@@ -80,7 +80,7 @@ export default defineComponent({
     border-radius: 10px;
 }
 
-section {
+.cards-blog {
     font-size: 2rem;
     padding: 2rem;
     background-color: #000;

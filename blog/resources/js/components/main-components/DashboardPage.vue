@@ -43,7 +43,7 @@
 
                 <li>
                     <router-link
-                        :to="{ name: 'ContactInfo' }"
+                        :to="{ name: 'DashboardContactPage' }"
                         class="router-link"
                     >
                         Messages List</router-link
