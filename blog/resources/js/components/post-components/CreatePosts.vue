@@ -2,7 +2,9 @@
     <main class="create-post">
         <div class="container">
             <DashboardButton />
-            <h1>Create Posts!</h1>
+            <h1 class="text-black text-center text-4xl font-bold">
+                Create Posts
+            </h1>
             <div class="success-msg" v-if="success">
                 <i class="fa fa-check"></i>
                 Post created successfully
@@ -50,7 +52,18 @@
                         errors.body[0]
                     }}</span>
 
-                    <input class="add-post-btn" type="submit" value="Submit" />
+                    <div class="form-buttons">
+                        <button class="add-post-btn bg-black" type="submit">
+                            <i class="fa-solid fa-right-to-bracket"></i> Submit
+                        </button>
+                        <button
+                            class="cancel-post-btn bg-red-900"
+                            type="button"
+                            @click="cancel()"
+                        >
+                            <i class="fa-solid fa-ban"></i>Cancel
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -104,15 +117,8 @@ export default defineComponent({
             axios
                 .post("/api/posts", formData)
                 .then(() => {
-                    this.fields = {
-                        category_id: "",
-                        title: "",
-                        file: null,
-                        body: "",
-                    };
-                    this.url = "";
+                    this.clearForm();
                     this.success = true;
-                    this.errors = {};
                     setTimeout(() => {
                         this.success = false;
                     }, 2500);
@@ -122,6 +128,24 @@ export default defineComponent({
                     this.errors = error.response.data.errors;
                     this.success = false;
                 });
+        },
+        cancel() {
+            if (Object.keys(this.fields).length === 0) {
+                return;
+            }
+            this.clearForm();
+
+            this.$router.push({ name: "DashboardPostsList" });
+        },
+        clearForm() {
+            this.fields = {
+                category_id: "",
+                title: "",
+                file: null,
+                body: "",
+            };
+            this.url = "";
+            this.errors = {};
         },
     },
     mounted() {
@@ -136,6 +160,19 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form {
+    border: 2px solid #aa9b72;
+    padding: 20px;
+}
 .create-post {
     background-color: #fff;
     padding: 0 3vw;
@@ -158,12 +195,13 @@ h1 {
     padding: 60px 0 50px 0;
 }
 
-.add-post-btn {
-    background-color: black;
+.add-post-btn,
+.cancel-post-btn {
     color: white;
-    border: none;
+    padding: 10px;
     cursor: pointer;
     transition: 0.3s ease;
+    border-radius: 5px;
 }
 
 .add-post-btn:hover {

@@ -1,7 +1,7 @@
 <template>
     <section class="contact-us">
-        <h1><i class="fa-solid fa-address-book"></i>Get in Touch!</h1>
-        <p class="text-center my-5 text-white">
+        <h1>Get in Touch!</h1>
+        <p class="text-center my-6 text-white text-xl">
             We're thrilled to connect with you! Whether you have questions,
             feedback, or simply want to say hello, we're all ears.
         </p>
@@ -14,14 +14,14 @@
             <div class="contact-info">
                 <div class="specific-info">
                     <i class="fas fa-home"></i>
-                    <div>
+                    <div class="contact-details">
                         <p class="title">4th floor, Hi Center</p>
                         <p class="subtitle">Something here</p>
                     </div>
                 </div>
                 <div class="specific-info">
                     <i class="fas fa-phone-alt"></i>
-                    <div>
+                    <div class="contact-details">
                         <a href="#">+254 720 XXX XXX </a>
                         <br />
                         <a href="#">+254 721 XXX XXX</a>
@@ -31,8 +31,8 @@
                 </div>
                 <div class="specific-info">
                     <i class="fas fa-envelope-open-text"></i>
-                    <div>
-                        <a href="mailto:info@alphayo.co.ke">
+                    <div class="contact-details">
+                        <a href="mailto:info@MindfulHeartbeat.com">
                             <p class="title">info@MindfulHeartbeat.com</p>
                         </a>
                         <p class="subtitle">Send us your message anytime!</p>
@@ -42,19 +42,19 @@
 
             <div class="contact-form">
                 <form @submit.prevent="submitForm">
-                    <label for="name"><span>Name</span></label>
+                    <label for="name">Name</label>
                     <input type="text" id="name" v-model="fields.name" />
                     <span v-if="errors.name" class="error">{{
                         errors.name[0]
                     }}</span>
                     <br />
-                    <label for="email"><span>Email</span></label>
+                    <label for="email">Email</label>
                     <input type="text" id="email" v-model="fields.email" />
                     <span v-if="errors.email" class="error">{{
                         errors.email[0]
                     }}</span>
                     <br />
-                    <label for="message"><span>Message</span></label>
+                    <label for="message">Message</label>
                     <textarea id="message" v-model="fields.message"></textarea>
                     <span v-if="errors.email" class="error">{{
                         errors.message[0]
@@ -92,6 +92,7 @@ export default defineComponent({
                         name: "",
                         email: "",
                         message: "",
+                        showFullMessage: false,
                     };
                     this.success = true;
                     setTimeout(() => {
@@ -109,14 +110,13 @@ export default defineComponent({
 
 <style scoped>
 .contact-us {
-    background-image: url("../../../../public/images/about-background-image.jpg");
-    background-size: cover;
-    padding-bottom: 100px;
+    background-image: linear-gradient(to bottom right, #141212 30%, #594e2f);
+    padding-bottom: 200px;
     padding-right: 50px;
 }
 .contact-us h1 {
     text-align: center;
-    padding: 80px 0 20px 0;
+    padding-top: 80px;
     font-size: 30px;
     font-weight: 400;
     color: white;
@@ -131,18 +131,18 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-weight: 300;
     padding-right: 30px;
 }
 
 .contact-us .specific-info {
     display: flex;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     padding-left: 100px;
 }
 
 .contact-us .specific-info a {
     display: inline-block;
+    color: white;
 }
 
 .contact-us .specific-info a:nth-of-type(1) {
@@ -162,7 +162,7 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     margin-right: 20px;
-    color: white;
+    color: black;
     background-color: #aa9b72;
     border-radius: 50%;
     width: 50px;
@@ -170,9 +170,17 @@ export default defineComponent({
 }
 
 .contact-us .subtitle {
-    color: #9b9b9b;
+    color: white;
 }
 
+.contact-us .title {
+    color: white;
+}
+
+.contact-details {
+    backdrop-filter: blur(5px);
+    padding: 5px;
+}
 /* Contact Form */
 
 .contact-us input,
@@ -188,20 +196,16 @@ textarea {
 }
 
 .contact-form {
-    background-color: #45444c;
+    backdrop-filter: blur(5px);
     padding: 20px;
-    color: white;
+    color: black;
     border-radius: 10px;
-}
-.contact-form span {
-    font-weight: 300;
-    font-size: 16;
+    border: 2px solid white;
 }
 
 textarea {
     height: 200px;
 }
-
 .contact-us input[type="submit"] {
     background-color: #aa9b72;
     width: 100px;
@@ -213,5 +217,10 @@ textarea {
 
 .contact-us input[type="submit"]:hover {
     transform: translateY(-4px);
+}
+
+label {
+    font-weight: bold;
+    color: white;
 }
 </style>

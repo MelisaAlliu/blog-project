@@ -24,9 +24,11 @@
                 >
                     <img :src="post.imagePath" alt="" class="card-image" />
                     <p class="mt-4 mb-2 text-sm">
-                        {{ post.created_at }}
+                        <i class="fa-solid fa-calendar"></i
+                        >{{ post.created_at }}
                         <span class="float-right"
-                            >Written By {{ post.user }}</span
+                            ><i class="fa-solid fa-user"></i>Written By
+                            {{ post.user }}</span
                         >
                     </p>
                     <h4 class="font-bold text-xl">

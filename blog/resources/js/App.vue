@@ -1,5 +1,5 @@
 <template>
-    <div id="wrapper">
+    <div class="wrapper">
         <div
             class="sidebar fixed top-0 left-0 h-screen transition-all duration-500"
             :class="{
@@ -84,9 +84,8 @@
                             :to="{ name: 'Dashboard' }"
                             class="flex items-center text-gray hover:text-white hover:translate-x-5"
                         >
-                            <span class="material-symbols-outlined"
-                                >dashboard</span
-                            >Dashboard
+                            <i class="fa-solid fa-dashboard"></i>
+                            Dashboard
                         </router-link>
                     </li>
                 </ul>

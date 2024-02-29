@@ -1,16 +1,16 @@
 <template>
     <main class="create-post">
         <div class="container">
-            <h1>Edit Post!</h1>
-            <!-- success message -->
+            <h1 class="text-black text-center text-4xl font-bold">
+                Edit Post!
+            </h1>
             <div class="success-msg" v-if="success">
                 <i class="fa fa-check"></i>
                 Post created successfully
             </div>
-            <!-- Contact Form -->
+
             <div class="contact-form">
                 <form @submit.prevent="submit">
-                    <!-- Title -->
                     <label for="title"><span>Title</span></label>
                     <input type="text" id="title" v-model="fields.title" />
                     <span v-if="errors.title" class="error">{{
@@ -18,7 +18,6 @@
                     }}</span>
                     <br />
 
-                    <!-- Image -->
                     <label for="image"><span>Image</span></label>
                     <input type="file" id="image" @input="grabFile" />
                     <span v-if="errors.file" class="error">{{
@@ -29,7 +28,6 @@
                     </div>
                     <br />
 
-                    <!-- Drop down -->
                     <label for="categories"
                         ><span>Choose a category:</span></label
                     >
@@ -48,13 +46,11 @@
                     }}</span>
                     <br />
 
-                    <!-- Body-->
                     <label for="body"><span>Body</span></label>
                     <textarea id="body" v-model="fields.body"></textarea>
                     <span v-if="errors.body" class="error">{{
                         errors.body[0]
                     }}</span>
-                    <!-- Button -->
                     <input class="add-post-btn" type="submit" value="Submit" />
                 </form>
             </div>
@@ -152,6 +148,12 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
 .create-post {
     background-color: #fff;
     padding: 0 3vw;

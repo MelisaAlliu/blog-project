@@ -1,57 +1,61 @@
 <template>
     <div class="categories-list bg-white">
-        <h1 class="text-black text-center p-20 text-4xl font-bold">
-            Categories List
-        </h1>
+        <DashboardButton />
         <div class="success-msg" v-if="success">
             <i class="fa fa-check"></i>
             Deleted successfully
         </div>
+        <h1 class="text-black text-center p-20 text-4xl font-bold">
+            Categories List
+        </h1>
 
         <div class="success-msg" v-if="editSuccess">
             <i class="fa fa-check"></i>
             Edited successfully
         </div>
-        <div
-            class="item"
-            v-for="(category, index) in categories"
-            :key="category.id"
-        >
-            <span>{{ index + 1 }}</span>
-            <p>{{ category.name }}</p>
-            <div>
-                <span class="material-symbols-outlined"> edit </span>
-                <router-link
-                    class="edit-link"
-                    :to="{
-                        name: 'EditCategories',
-                        params: { id: category.id },
-                    }"
-                    >Edit</router-link
+        <div class="categories-cart">
+            <div
+                class="item"
+                v-for="(category, index) in categories"
+                :key="category.id"
+            >
+                <span
+                    ><strong>Category number {{ index + 1 }}</strong></span
                 >
+                <p><strong>Category name:</strong> {{ category.name }}</p>
+                <div>
+                    <router-link
+                        class="edit-link"
+                        :to="{
+                            name: 'EditCategories',
+                            params: { id: category.id },
+                        }"
+                        ><i class="fa-solid fa-pen-to-square"></i
+                        >Edit</router-link
+                    >
+                    <button class="delete-btn" @click="destroy(category.id)">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
+                </div>
             </div>
-
-            <span class="material-symbols-outlined"> delete </span>
-            <input
-                type="button"
-                value="Delete"
-                @click="destroy(category.id)"
-                class="delete-btn"
-            />
         </div>
         <div class="index-categories">
             <router-link :to="{ name: 'CreateCategories' }"
-                >Create Categories<span>&#8594;</span></router-link
-            >
+                >Create Categories <i class="fa-solid fa-arrow-right"></i
+            ></router-link>
         </div>
     </div>
 </template>
+
 <script lang="ts">
 import { defineComponent } from "vue";
 import axios from "axios";
 import { Category } from "../interfaces/Category";
+import DashboardButton from "../main-components/helper-components/DashboardButton.vue";
 
 export default defineComponent({
+    components: { DashboardButton },
     props: {
         editSuccess: Boolean,
     },
@@ -63,18 +67,20 @@ export default defineComponent({
     },
     methods: {
         destroy(id: number) {
-            axios
-                .delete(`/api/categories/${id}`)
-                .then(() => {
-                    this.success = true;
-                    setTimeout(() => {
-                        this.success = false;
-                    }, 2500);
-                    this.fetchCategories();
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+            if (confirm("Are you sure you want to delete this category?")) {
+                axios
+                    .delete(`/api/categories/${id}`)
+                    .then(() => {
+                        this.success = true;
+                        setTimeout(() => {
+                            this.success = false;
+                        }, 2500);
+                        this.fetchCategories();
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
         },
         fetchCategories() {
             axios
@@ -95,12 +101,22 @@ export default defineComponent({
 .categories-list {
     min-height: 100vh;
 }
-
-.categories-list .item {
+.categories-cart {
+    margin: 0 20px;
     display: flex;
+    flex-wrap: wrap;
+}
+.categories-list .item {
+    color: black;
+    padding: 20px;
+    flex: 0 0 calc(33.33% - 20px);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    max-width: 600px;
-    margin: 0 auto !important;
+    border: 1px solid #000;
+    max-width: 400px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom right, #f3f3f3 30%, #aa9b72);
 }
 
 .categories-list .item p,
@@ -110,6 +126,29 @@ export default defineComponent({
 }
 
 .index-categories {
+    width: 200px;
     text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 20px;
+    background-color: black;
+}
+
+.index-categories {
+    text-align: center;
+}
+.edit-link {
+    margin-right: 10px;
+    color: white;
+    padding: 10px;
+    background-color: green;
+    border-radius: 5px;
+}
+.delete-btn {
+    color: white;
+    padding: 7px;
+    background-color: red;
+    border-radius: 5px;
 }
 </style>

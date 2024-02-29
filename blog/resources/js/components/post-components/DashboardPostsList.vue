@@ -1,6 +1,8 @@
 <template>
     <div class="categories-list">
-        <h1>Posts List</h1>
+        <DashboardButton />
+        <h1 class="text-black text-center text-4xl font-bold">Posts List</h1>
+
         <div class="success-msg" v-if="success">
             <i class="fa fa-check"></i>
             Post deleted successfully
@@ -9,27 +11,32 @@
             <i class="fa fa-check"></i>
             Post edited successfully
         </div>
-        <div class="item" v-for="(post, index) in posts" :key="post.id">
-            <span>{{ index + 1 }}.</span>
-            <p>{{ post.title }}</p>
-            <div>
-                <router-link
-                    class="edit-link"
-                    :to="{ name: 'EditPosts', params: { slug: post.slug } }"
-                    >Edit</router-link
+        <div class="cart-message">
+            <div class="item" v-for="(post, index) in posts" :key="post.id">
+                <span
+                    ><strong>Post number {{ index + 1 }}</strong></span
                 >
-            </div>
+                <p><strong>Post title:</strong> {{ post.title }}</p>
+                <div class="post-buttons">
+                    <router-link
+                        class="edit-link"
+                        :to="{ name: 'EditPosts', params: { slug: post.slug } }"
+                        ><i class="fa-solid fa-pen-to-square"></i
+                        >Edit</router-link
+                    >
 
-            <input
-                type="button"
-                value="Delete"
-                class="delete-btn"
-                @click="destroy(post.slug)"
-            />
+                    <button class="delete-btn" @click="destroy(post.slug)">
+                        <i class="fa-solid fa-trash"></i>
+                        Delete
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="index-categories">
+        <div class="go-to-btn">
             <router-link :to="{ name: 'CreatePosts' }"
-                >Create post<span>&#8594;</span></router-link
+                ><button class="index-categories">
+                    Create post
+                </button></router-link
             >
         </div>
     </div>
@@ -39,8 +46,10 @@
 import { defineComponent, PropType } from "vue";
 import axios from "axios";
 import { Post } from "../interfaces/Post";
+import DashboardButton from "../main-components/helper-components/DashboardButton.vue";
 
 export default defineComponent({
+    components: { DashboardButton },
     props: {
         editSuccess: Boolean as PropType<boolean>,
     },
@@ -90,62 +99,63 @@ export default defineComponent({
 }
 
 .categories-list h1 {
-    font-weight: 300;
     padding: 50px 0 30px 0;
     text-align: center;
 }
-
-.categories-list .item {
+.cart-message {
+    margin: 0 40px;
     display: flex;
-    justify-content: right;
+    flex-wrap: wrap;
+}
+.post-buttons {
+    margin-top: 10px;
+}
+.categories-list .item {
+    margin: 10px;
+    color: black;
+    padding: 20px;
+    flex: 0 0 calc(33.33% - 20px);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    max-width: 300px;
-    margin: 0 auto !important;
+    border: 1px solid #000;
+    max-width: 500px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom right, #f3f3f3 30%, #aa9b72);
 }
-
-.categories-list .item p {
-    font-size: 16px;
+.categories-list p {
+    margin: 10px 0;
 }
-
-.categories-list .item p,
-.categories-list .item div,
-.categories-list .item {
-    margin: 15px 8px;
-}
-
-.categories ul li {
-    list-style: none;
-    background-color: #494949;
-    margin: 20px 5px;
-
-    border-radius: 15px;
-}
-
-.categories ul {
-    display: flex;
-    justify-content: center;
-}
-
 .categories a {
     color: white;
     padding: 10px 20px;
     display: inline-block;
 }
 
-.create-categories a,
-.index-categories a {
-    all: revert;
-    margin: 20px 0;
-    display: inline-block;
-    text-decoration: none;
-}
-
-.create-categories a span,
-.index-categories a span {
-    font-size: 22px;
-}
-
 .index-categories {
+    width: 200px;
     text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 20px;
+    background-color: black;
+}
+.go-to-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+.edit-link {
+    margin-right: 10px;
+    color: white;
+    padding: 10px;
+    background-color: green;
+    border-radius: 5px;
+}
+.delete-btn {
+    color: white;
+    padding: 7px;
+    background-color: red;
+    border-radius: 5px;
 }
 </style>

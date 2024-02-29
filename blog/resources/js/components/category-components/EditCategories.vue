@@ -1,8 +1,10 @@
 <template>
     <div id="create-categories">
         <div id="contact-us">
-            <h1>Edit Category!</h1>
-            <div class="success-msg text-green-600" v-if="success">
+            <h1 class="text-black text-center text-4xl font-bold">
+                Edit Category!
+            </h1>
+            <div class="success-msg" v-if="success">
                 <i class="fa fa-check"></i>
                 Updated successfully
             </div>
@@ -86,5 +88,41 @@ export default defineComponent({
     background-color: #f3f4f6;
     height: 90vh;
     padding: 50px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: black;
+}
+
+.container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+h1 {
+    text-align: center;
+    padding: 40px 0 50px 0;
+}
+
+.add-post-btn {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 200px;
+}
+
+.add-post-btn:hover {
+    transform: translateY(-4px);
 }
 </style>

@@ -38,7 +38,7 @@ Route::middleware('auth:sanctum')->delete('categories/{category}', [CategoryCont
 Route::middleware('auth:sanctum')->post('posts', [PostController::class, 'store']);
 Route::middleware('auth:sanctum')->put('posts/{post:slug}', [PostController::class, 'update']);
 Route::middleware('auth:sanctum')->delete('posts/{post:slug}', [PostController::class, 'destroy']);
-
+Route::middleware('auth:sanctum')->get('contact-info', [ContactController::class, 'index']);
 
 
 //Public routes
@@ -52,4 +52,4 @@ Route::get('posts', [PostController::class, 'index']);
 Route::get('related-posts/{post:slug}', [RelatedPostController::class, 'index']);
 Route::get('dashboard-posts', [DashboardController::class, 'index']);
 Route::post('contact', [ContactController::class, 'store']);
-Route::get('contact-info', [ContactController::class, 'index']);
+

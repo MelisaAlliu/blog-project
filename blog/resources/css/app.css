@@ -20,7 +20,7 @@ a {
     color: #999;
 }
 
-#wrapper {
+.wrapper {
     margin-left: 200px;
     overflow-x: hidden;
 }
@@ -83,6 +83,15 @@ section {
     color: red;
 }
 
+.success-msg {
+    padding: 10px 12px;
+    border-radius: 5px;
+    color: #270;
+    background-color: #dff2bf;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+}
 :root {
     --timing: 400ms;
     --rotation: 20deg;
@@ -177,20 +186,6 @@ section {
     #contact-us .specific-info {
         margin-bottom: 25px;
     }
-
-    .categories ul {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .categories ul li {
-        margin-top: 7px;
-        margin-bottom: 7px;
-    }
-
-    .categories ul li:nth-of-type(4) {
-        margin-bottom: 25px;
-    }
 }
 
 @media screen and (min-width: 1920px) {
@@ -205,7 +200,9 @@ section {
     .carusel-section,
     .create-post,
     .categories-list,
-    .contact-us {
+    .contact-list,
+    .contact-us,
+    .create-categories {
         width: 1710px;
     }
 }

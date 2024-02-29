@@ -1,9 +1,11 @@
 <template>
-    <div id="create-categories" class="bg-white">
+    <div class="create-categories bg-white">
         <div id="contact-us">
+            <DashboardButton />
             <h1 class="text-black text-center text-4xl font-bold">
                 Create New Category!
             </h1>
+
             <div class="success-msg text-green-600" v-if="success">
                 <i class="fa fa-check"></i>
                 Category created successfully
@@ -24,11 +26,11 @@
                     <input
                         type="submit"
                         value="Submit"
-                        class="mx-2 p-2 bg-black text-white cursor-pointer border rounded-lg"
+                        class="bg-black text-white border rounded-md p-2 mt-4 cursor-pointer transition duration-300 ease-in-out hover:bg-white hover:text-black hover:border-black hover:shadow-lg"
                     />
                 </form>
             </div>
-            <div class="create-categories">
+            <div>
                 <router-link :to="{ name: 'CategoriesList' }"
                     >Categories List <span>&#8594;</span></router-link
                 >
@@ -41,8 +43,10 @@ import { defineComponent } from "vue";
 import axios from "axios";
 import { Fields } from "../interfaces/Fields";
 import { Errors } from "../interfaces/Errors";
+import DashboardButton from "../main-components/helper-components/DashboardButton.vue";
 
 export default defineComponent({
+    components: { DashboardButton },
     data() {
         return {
             field: {} as Fields,
@@ -72,8 +76,40 @@ export default defineComponent({
 </script>
 
 <style scoped>
-#create-categories {
+.create-categories {
     height: 100vh;
-    padding: 50px;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+h1 {
+    text-align: center;
+    padding: 40px 0 50px 0;
+}
+
+.add-post-btn {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    width: 200px;
+}
+
+.add-post-btn:hover {
+    transform: translateY(-4px);
 }
 </style>

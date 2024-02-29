@@ -1,11 +1,13 @@
 <template>
-    <router-link
-        @click="closeOverlay"
-        :to="{ name: 'Dashboard' }"
-        class="flex items-center text-gray hover:text-black"
-    >
-        <span class="material-symbols-outlined">dashboard</span>Go to dashboard
-    </router-link>
+    <button>
+        <router-link
+            @click="closeOverlay"
+            :to="{ name: 'Dashboard' }"
+            class="flex items-center text-white"
+        >
+            Go to dashboard
+        </router-link>
+    </button>
 </template>
 
 <script>
@@ -14,10 +16,14 @@ export default {};
 
 <style scoped>
 button {
-    display: flex;
-    left: 0;
-    top: 0;
-    margin-left: 20px;
-    background-color: rgb(45, 45, 96);
+    margin-top: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 40px;
+    background-color: #aa9b72;
+}
+button:hover {
+    background-color: black;
+    color: white;
 }
 </style>

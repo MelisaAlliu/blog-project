@@ -1,23 +1,23 @@
 <template>
-    <div class="categories-list bg-white">
+    <div class="contact-list bg-white">
+        <DashboardButton />
         <h1 class="text-black text-center p-20 text-4xl font-bold">
             Messages List
         </h1>
-        <div
-            class="item"
-            v-for="(contact, index) in contacts"
-            :key="contact.id"
-        >
-            <span>{{ index + 1 }}</span>
-            <p class="text-black">
-                <strong>User name:</strong> {{ contact.name }}
-            </p>
-            <p class="text-black">
-                <strong>Contact email:</strong> {{ contact.email }}
-            </p>
-            <p class="text-black">
-                <strong>Message:</strong> {{ contact.message }}
-            </p>
+        <div class="cart-message">
+            <div class="item" v-for="contact in contacts" :key="contact.id">
+                <p><strong>User name:</strong> {{ contact.name }}</p>
+                <p><strong>Contact email:</strong> {{ contact.email }}</p>
+                <strong>Message:</strong>
+                <p>{{ getMessage(contact) }}</p>
+                <button
+                    v-if="shouldDisplayButton(contact)"
+                    @click="toggleMessage(contact)"
+                >
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    {{ contact.showFullMessage ? "Read less" : "Read more" }}
+                </button>
+            </div>
         </div>
     </div>
 </template>
@@ -27,8 +27,10 @@ import { defineComponent } from "vue";
 import axios from "axios";
 import { ContactFields } from "../interfaces/ContactFields";
 import { Errors } from "../interfaces/Errors";
+import DashboardButton from "../main-components/helper-components/DashboardButton.vue";
 
 export default defineComponent({
+    components: { DashboardButton },
     data() {
         return {
             contacts: [] as ContactFields[],
@@ -39,6 +41,15 @@ export default defineComponent({
     mounted() {
         this.fetchMessages();
     },
+    computed: {
+        truncatedMessage() {
+            return (message: string) => {
+                return (
+                    message.slice(0, 50) + (message.length > 50 ? "..." : "")
+                );
+            };
+        },
+    },
     methods: {
         async fetchMessages() {
             try {
@@ -48,29 +59,57 @@ export default defineComponent({
                 this.errors = error.response.data.errors;
             }
         },
+        getMessage(contact: ContactFields): string {
+            return contact.showFullMessage
+                ? contact.message
+                : this.truncatedMessage(contact.message);
+        },
+        shouldDisplayButton(contact: ContactFields): boolean {
+            return contact.message.length > 50;
+        },
+        toggleMessage(contact: ContactFields) {
+            contact.showFullMessage = !contact.showFullMessage;
+        },
     },
 });
 </script>
 
 <style scoped>
-.categories-list {
+.contact-list {
     min-height: 100vh;
 }
-
-.categories-list .item {
+.cart-message {
+    margin: 0 20px;
     display: flex;
+    flex-wrap: wrap;
+}
+.contact-list .item {
+    color: black;
+    padding: 20px;
+    flex: 0 0 calc(33.33% - 20px);
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    max-width: 600px;
-    margin: 0 auto !important;
+    border: 1px solid #000;
+    max-width: 400px;
+    border-radius: 10px;
+    background-image: linear-gradient(to bottom right, #f3f3f3 30%, #aa9b72);
 }
 
-.categories-list .item p,
-.categories-list .item div,
-.categories-list .item {
+.contact-list .item p,
+.contact-list .item div,
+.contact-list .item {
     margin: 15px 8px;
 }
 
-.index-categories {
+.index-contact {
     text-align: center;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #aa9b72;
 }
 </style>
