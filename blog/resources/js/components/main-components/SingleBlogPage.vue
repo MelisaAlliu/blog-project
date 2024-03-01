@@ -25,9 +25,9 @@
     </section>
 
     <p class="text-center mb-4">Related</p>
-    <section class="recommended mt-8 grid grid-cols-3 gap-4">
+    <section class="recommended-cards mt-8 grid grid-cols-3 gap-2">
         <div
-            class="recommended-cards"
+            class="recommended-card"
             v-for="relatedPost in relatedPosts"
             :key="relatedPost.id"
         >
@@ -100,6 +100,9 @@ export default {
     line-height: 1.5;
 }
 
+.recommended-cards {
+    margin: 20px;
+}
 .recommended-card {
     width: 350px;
 }
@@ -116,7 +119,7 @@ export default {
     font-size: 18px;
 }
 
-.recommended p {
+.recommended-card p {
     margin-top: 80px;
     margin-bottom: 15px;
 }

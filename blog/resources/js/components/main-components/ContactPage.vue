@@ -10,7 +10,7 @@
             Message sent successfully!
         </div>
 
-        <div class="container">
+        <div class="contact-container">
             <div class="contact-info">
                 <div class="specific-info">
                     <i class="fas fa-home"></i>
@@ -122,7 +122,7 @@ export default defineComponent({
     color: white;
 }
 
-.contact-us .container {
+.contact-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -222,5 +222,17 @@ textarea {
 label {
     font-weight: bold;
     color: white;
+}
+
+@media (max-width: 1260px) {
+    .contact-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .contact-us .specific-info {
+        margin-bottom: 25px;
+    }
 }
 </style>

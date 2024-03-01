@@ -23,7 +23,7 @@
         </div>
 
         <div class="categories flex justify-center mb-6">
-            <ul class="flex">
+            <ul class="categories-list">
                 <li
                     class="mr-4 bg-gray-800 rounded-lg"
                     v-for="category in categories"

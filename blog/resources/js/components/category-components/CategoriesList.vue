@@ -103,8 +103,8 @@ export default defineComponent({
 }
 .categories-cart {
     margin: 0 20px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
 }
 .categories-list .item {
     color: black;
@@ -150,5 +150,20 @@ export default defineComponent({
     padding: 7px;
     background-color: red;
     border-radius: 5px;
+}
+
+@media (max-width: 1320px) {
+    .categories-cart {
+        display: grid;
+        grid-template-columns: 0.5fr 0.5fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .categories-cart {
+        display: grid;
+        grid-template-columns: 2fr;
+        justify-content: center;
+    }
 }
 </style>

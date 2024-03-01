@@ -178,6 +178,19 @@ section {
     }
 }
 
+@media (max-width: 1098px) {
+    .cards-blog {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 1320px) {
+    .writers-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 @media (max-width: 600px) {
     .cards-blog {
         display: grid;
@@ -194,18 +207,13 @@ section {
         gap: 10px;
     }
 
+    .categories-list {
+        display: flex;
+        flex-direction: column;
+    }
+
     .main-footer div {
         display: block;
-    }
-
-    #contact-us .container {
-        display: grid;
-        grid-template-columns: 1fr;
-        justify-items: center;
-    }
-
-    #contact-us .specific-info {
-        margin-bottom: 25px;
     }
 }
 

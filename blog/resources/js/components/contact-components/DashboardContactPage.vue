@@ -80,8 +80,8 @@ export default defineComponent({
 }
 .cart-message {
     margin: 0 20px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
 }
 .contact-list .item {
     color: black;
@@ -111,5 +111,20 @@ button {
     padding: 10px;
     border-radius: 5px;
     background-color: #aa9b72;
+}
+
+@media (max-width: 1320px) {
+    .cart-message {
+        display: grid;
+        grid-template-columns: 0.5fr 0.5fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .cart-message {
+        display: grid;
+        grid-template-columns: 2fr;
+        justify-content: center;
+    }
 }
 </style>

@@ -11,7 +11,7 @@
             <i class="fa fa-check"></i>
             Post edited successfully
         </div>
-        <div class="cart-message">
+        <div class="post-cart">
             <div class="item" v-for="(post, index) in posts" :key="post.id">
                 <span
                     ><strong>Post number {{ index + 1 }}</strong></span
@@ -102,14 +102,15 @@ export default defineComponent({
     padding: 50px 0 30px 0;
     text-align: center;
 }
-.cart-message {
+.post-cart {
     margin: 0 40px;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 0.5fr;
 }
 .post-buttons {
     margin-top: 10px;
 }
+
 .categories-list .item {
     margin: 10px;
     color: black;
@@ -157,5 +158,20 @@ export default defineComponent({
     padding: 7px;
     background-color: red;
     border-radius: 5px;
+}
+
+@media (max-width: 1320px) {
+    .post-cart {
+        display: grid;
+        grid-template-columns: 0.5fr 0.5fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .post-cart {
+        display: grid;
+        grid-template-columns: 2fr;
+        justify-content: center;
+    }
 }
 </style>
