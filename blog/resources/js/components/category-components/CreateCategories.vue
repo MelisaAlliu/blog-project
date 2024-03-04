@@ -22,18 +22,24 @@
                     <span v-if="errors.name" class="error text-red-600">{{
                         errors.name[0]
                     }}</span>
+                    <br />
 
-                    <input
-                        type="submit"
-                        value="Submit"
-                        class="bg-black text-white border rounded-md p-2 mt-4 cursor-pointer transition duration-300 ease-in-out hover:bg-white hover:text-black hover:border-black hover:shadow-lg"
-                    />
+                    <button class="add-post-btn bg-black" type="submit">
+                        <i class="fa-solid fa-right-to-bracket"></i> Submit
+                    </button>
+                    <button
+                        class="cancel-post-btn bg-red-900"
+                        type="button"
+                        @click="cancel()"
+                    >
+                        <i class="fa-solid fa-ban"></i>Cancel
+                    </button>
                 </form>
             </div>
-            <div>
+            <div class="go-to-btn">
                 <router-link :to="{ name: 'CategoriesList' }"
-                    >Categories List <span>&#8594;</span></router-link
-                >
+                    ><button class="index-categories">Categories List</button>
+                </router-link>
             </div>
         </div>
     </div>
@@ -59,8 +65,7 @@ export default defineComponent({
             axios
                 .post("/api/categories/create", this.field)
                 .then(() => {
-                    this.field = Object.assign({}, this.field);
-                    this.errors = {} as Errors;
+                    this.clearForm();
                     this.success = true;
 
                     setTimeout(() => {
@@ -71,6 +76,16 @@ export default defineComponent({
                     this.errors = error.response.data.errors;
                 });
         },
+
+        cancel() {
+            this.clearForm();
+            this.$router.push({ name: "CategoriesList" });
+        },
+
+        clearForm() {
+            this.field = {} as Fields;
+            this.errors = {} as Errors;
+        },
     },
 });
 </script>
@@ -79,12 +94,9 @@ export default defineComponent({
 .create-categories {
     height: 100vh;
 }
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+form {
+    padding: 40px;
 }
-
 .container input {
     width: 100%;
     padding: 10px;
@@ -100,16 +112,31 @@ h1 {
     padding: 40px 0 50px 0;
 }
 
-.add-post-btn {
-    background-color: black;
+.add-post-btn,
+.cancel-post-btn {
     color: white;
     padding: 10px;
     cursor: pointer;
     transition: 0.3s ease;
     width: 200px;
+    border-radius: 5px;
 }
 
 .add-post-btn:hover {
     transform: translateY(-4px);
+}
+
+.index-categories {
+    width: 200px;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 20px;
+    background-color: black;
+}
+.go-to-btn {
+    text-align: center;
+    margin-top: 20px;
 }
 </style>

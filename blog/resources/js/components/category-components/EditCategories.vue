@@ -17,6 +17,7 @@
                     }}</span>
 
                     <input type="submit" value="Submit" />
+                    
                 </form>
             </div>
             <div class="create-categories">
@@ -49,7 +50,7 @@ export default defineComponent({
             axios
                 .put(`/api/categories/${this.id}`, this.field)
                 .then(() => {
-                    this.field = Object.assign({}, this.field);
+                    this.field = {} as Fields;
                     this.errors = {} as Errors;
                     this.success = true;
                     this.$emit("categoryEdited");
@@ -91,9 +92,6 @@ export default defineComponent({
 }
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     color: black;
 }
 

@@ -109,11 +109,9 @@ export default defineComponent({
 .categories-list .item {
     color: black;
     padding: 20px;
-    flex: 0 0 calc(33.33% - 20px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #000;
     max-width: 400px;
     border-radius: 10px;
     background-image: linear-gradient(to bottom right, #f3f3f3 30%, #aa9b72);

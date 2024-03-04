@@ -34,9 +34,7 @@
         </div>
         <div class="go-to-btn">
             <router-link :to="{ name: 'CreatePosts' }"
-                ><button class="index-categories">
-                    Create post
-                </button></router-link
+                ><button class="index-post">Create post</button></router-link
             >
         </div>
     </div>
@@ -62,18 +60,20 @@ export default defineComponent({
     },
     methods: {
         destroy(slug: string) {
-            axios
-                .delete(`/api/posts/${slug}`)
-                .then(() => {
-                    this.fetchPosts();
-                    this.success = true;
-                    setTimeout(() => {
-                        this.success = false;
-                    }, 2500);
-                })
-                .catch((error) => {
-                    console.log(error.response.data);
-                });
+            if (confirm("Are you sure you want to delete this post?")) {
+                axios
+                    .delete(`/api/posts/${slug}`)
+                    .then(() => {
+                        this.fetchPosts();
+                        this.success = true;
+                        setTimeout(() => {
+                            this.success = false;
+                        }, 2500);
+                    })
+                    .catch((error) => {
+                        console.log(error.response.data);
+                    });
+            }
         },
 
         fetchPosts() {
@@ -119,7 +119,6 @@ export default defineComponent({
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #000;
     max-width: 500px;
     border-radius: 10px;
     background-image: linear-gradient(to bottom right, #f3f3f3 30%, #aa9b72);
@@ -133,7 +132,7 @@ export default defineComponent({
     display: inline-block;
 }
 
-.index-categories {
+.index-post {
     width: 200px;
     text-align: center;
     margin-top: 20px;
@@ -170,7 +169,7 @@ export default defineComponent({
 @media (max-width: 600px) {
     .post-cart {
         display: grid;
-        grid-template-columns: 2fr;
+        grid-template-columns: 0.5fr;
         justify-content: center;
     }
 }

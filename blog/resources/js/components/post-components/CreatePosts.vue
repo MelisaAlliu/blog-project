@@ -71,10 +71,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Ref, ref } from "vue";
+import { defineComponent } from "vue";
 import axios from "axios";
 import { Errors } from "../interfaces/Errors";
 import { Category } from "../interfaces/Category";
+import { PostFields } from "../interfaces/PostFields";
 import DashboardButton from "../main-components/helper-components/DashboardButton.vue";
 
 export default defineComponent({
@@ -84,12 +85,7 @@ export default defineComponent({
     data() {
         return {
             success: false,
-            fields: {
-                category_id: "",
-                title: "",
-                file: null as File | null,
-                body: "",
-            },
+            fields: {} as PostFields,
             errors: {} as Errors,
             url: "",
             categories: [] as Category[],
@@ -138,12 +134,7 @@ export default defineComponent({
             this.$router.push({ name: "DashboardPostsList" });
         },
         clearForm() {
-            this.fields = {
-                category_id: "",
-                title: "",
-                file: null,
-                body: "",
-            };
+            this.fields = {} as PostFields;
             this.url = "";
             this.errors = {};
         },
@@ -163,15 +154,6 @@ export default defineComponent({
 .form-buttons {
     display: flex;
     justify-content: space-between;
-}
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-form {
-    border: 2px solid #aa9b72;
-    padding: 20px;
 }
 .create-post {
     background-color: #fff;
