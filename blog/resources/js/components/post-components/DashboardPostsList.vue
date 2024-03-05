@@ -57,7 +57,7 @@ export default defineComponent({
     emits: ["updateSidebar"],
     data() {
         return {
-            posts: [] as Post[],
+            posts: {} as Post,
             success: false,
         };
     },

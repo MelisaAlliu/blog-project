@@ -64,7 +64,7 @@ export default defineComponent({
     },
     data() {
         return {
-            categories: [] as Category[],
+            categories: {} as Category,
             success: false,
         };
     },

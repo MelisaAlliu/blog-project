@@ -89,7 +89,7 @@ export default defineComponent({
             fields: {} as PostFields,
             errors: {} as Errors,
             url: "",
-            categories: [] as Category[],
+            categories: {} as Category,
         };
     },
     methods: {

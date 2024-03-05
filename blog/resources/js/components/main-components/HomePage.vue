@@ -54,12 +54,12 @@ export default defineComponent({
     emits: ["updateSidebar"],
     data() {
         return {
-            posts: [] as Post[],
+            posts: {} as Post,
         };
     },
     mounted() {
         axios
-            .get<{ data: Post[] }>("/api/home-posts")
+            .get("/api/home-posts")
             .then((response) => (this.posts = response.data.data))
             .catch((error) => {
                 console.log(error);

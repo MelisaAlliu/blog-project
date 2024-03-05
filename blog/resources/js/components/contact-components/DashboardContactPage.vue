@@ -33,7 +33,7 @@ export default defineComponent({
     components: { DashboardButton },
     data() {
         return {
-            contacts: [] as ContactFields[],
+            contacts: {} as ContactFields,
             success: false,
             errors: {} as Errors,
         };

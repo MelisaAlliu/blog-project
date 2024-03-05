@@ -98,10 +98,10 @@ export default defineComponent({
     emits: ["updateSidebar"],
     data() {
         return {
-            posts: [] as Post[],
-            categories: [] as Category[],
+            posts: {} as Post,
+            categories: {} as Category,
             title: "",
-            links: [] as Link[],
+            links: {} as Link,
         };
     },
     methods: {

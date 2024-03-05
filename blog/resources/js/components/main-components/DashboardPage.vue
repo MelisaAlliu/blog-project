@@ -57,7 +57,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import axios from "axios";
-import { AxiosResponse } from "axios";
 import { RouterLink } from "vue-router";
 
 export default defineComponent({
@@ -69,7 +68,7 @@ export default defineComponent({
     mounted() {
         axios
             .get("/api/user")
-            .then((response: AxiosResponse<{ name: string }>) => {
+            .then((response) => {
                 this.name = response.data.name;
             })
             .catch((error: any) => {

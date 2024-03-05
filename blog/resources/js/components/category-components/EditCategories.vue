@@ -55,8 +55,7 @@ export default defineComponent({
             axios
                 .put(`/api/categories/${this.id}`, this.field)
                 .then(() => {
-                    this.field = {} as Fields;
-                    this.errors = {} as Errors;
+                    this.clearForm();
                     this.success = true;
                     this.$emit("categoryEdited");
                     setTimeout(() => {
@@ -81,6 +80,10 @@ export default defineComponent({
                         this.$router.push({ name: "Login" });
                     }
                 });
+        },
+        clearForm() {
+            this.field = {} as Fields;
+            this.errors = {} as Errors;
         },
     },
     mounted() {

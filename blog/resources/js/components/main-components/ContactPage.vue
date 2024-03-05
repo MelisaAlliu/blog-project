@@ -83,8 +83,7 @@ export default defineComponent({
                 .post("/api/contact", this.fields)
                 .then(() => {
                     console.log("Message sent");
-                    this.fields = {} as ContactFields;
-                    this.errors = {} as Errors;
+                    this.clearForm();
                     this.success = true;
                     setTimeout(() => {
                         this.success = false;
@@ -94,6 +93,10 @@ export default defineComponent({
                     this.errors = error.response.data.errors;
                     console.log(error);
                 });
+        },
+        clearForm() {
+            this.fields = {} as ContactFields;
+            this.errors = {} as Errors;
         },
     },
 });
