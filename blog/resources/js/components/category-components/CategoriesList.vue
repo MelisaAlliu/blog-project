@@ -40,10 +40,13 @@
                 </div>
             </div>
         </div>
-        <div class="index-categories">
+        <div class="go-to-btn">
             <router-link :to="{ name: 'CreateCategories' }"
-                >Create Categories <i class="fa-solid fa-arrow-right"></i
-            ></router-link>
+                ><button class="index">
+                    Create Categories
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </router-link>
         </div>
     </div>
 </template>
@@ -100,6 +103,7 @@ export default defineComponent({
 <style scoped>
 .categories-list {
     min-height: 100vh;
+    padding-bottom: 50px;
 }
 .categories-cart {
     margin: 0 20px;
@@ -123,19 +127,6 @@ export default defineComponent({
     margin: 15px 8px;
 }
 
-.index-categories {
-    width: 200px;
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    margin-left: 20px;
-    background-color: black;
-}
-
-.index-categories {
-    text-align: center;
-}
 .edit-link {
     margin-right: 10px;
     color: white;

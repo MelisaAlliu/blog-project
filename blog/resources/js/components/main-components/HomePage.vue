@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="home-wrapper">
         <header class="header">
             <HomePageHeader />
         </header>

@@ -1,10 +1,6 @@
 <template>
     <section class="single-blog-post">
-        <img
-            class="about-logo"
-            src="../../../../public/images/about-logo-2.png"
-            alt=""
-        />
+        <img class="about-logo" src="/public/images/about-logo-2.png" alt="" />
         <h1 class="text-3xl font-bold mb-6 mt-6 text-center">
             Meet our writers
         </h1>
@@ -18,10 +14,7 @@
         </h1>
         <div class="video-content flex justify-center" data-aos="fade-left">
             <video class="max-w-[940px] h-auto" autoplay loop muted>
-                <source
-                    src="../../../../public/images/video1.mp4"
-                    type="video/mp4"
-                />
+                <source src="/public/images/video1.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
         </div>

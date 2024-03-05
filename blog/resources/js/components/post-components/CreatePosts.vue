@@ -1,10 +1,8 @@
 <template>
     <main class="create-post">
-        <div class="container">
+        <div class="container text-black">
             <DashboardButton />
-            <h1 class="text-black text-center text-4xl font-bold">
-                Create Posts
-            </h1>
+            <h1 class="text-center text-4xl font-bold">Create Posts</h1>
             <div class="success-msg" v-if="success">
                 <i class="fa fa-check"></i>
                 Post created successfully
@@ -53,9 +51,7 @@
                     }}</span>
 
                     <div class="form-buttons">
-                        <button class="add-post-btn bg-black" type="submit">
-                            <i class="fa-solid fa-right-to-bracket"></i> Submit
-                        </button>
+                        <SubmitButton />
                         <button
                             class="cancel-post-btn bg-red-900"
                             type="button"
@@ -77,10 +73,12 @@ import { Errors } from "../interfaces/Errors";
 import { Category } from "../interfaces/Category";
 import { PostFields } from "../interfaces/PostFields";
 import DashboardButton from "../main-components/helper-components/DashboardButton.vue";
+import SubmitButton from "../main-components/helper-components/SubmitButton.vue";
 
 export default defineComponent({
     components: {
         DashboardButton,
+        SubmitButton,
     },
     data() {
         return {
@@ -172,6 +170,7 @@ select {
     margin-bottom: 20px;
     font-size: 16px;
 }
+
 h1 {
     text-align: center;
     padding: 60px 0 50px 0;

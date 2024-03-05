@@ -16,7 +16,7 @@
 
             <div class="logo mt-12 ml-10">
                 <img
-                    src="../../public/images/logo.png"
+                    src="/public/images/logo.png"
                     alt="Brain connectd wiht heart"
                     class="w-150 h-auto pr-8"
                 />
@@ -93,7 +93,7 @@
         </div>
 
         <div
-            class="fixed top-2 left-2 z-10 cursor-pointer hidden menuButton"
+            class="absolute top-2 left-2 z-10 cursor-pointer hidden menuButton"
             @click="showOverlay"
         >
             <div class="bar w-8 h-1 bg-white my-1"></div>
@@ -190,7 +190,7 @@ export default defineComponent({
 
 @media (max-width: 768px) {
     img {
-        width: 250px;
+        width: 150px;
         height: auto;
         margin: auto;
     }

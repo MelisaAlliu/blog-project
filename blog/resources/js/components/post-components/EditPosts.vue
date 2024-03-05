@@ -51,7 +51,16 @@
                     <span v-if="errors.body" class="error">{{
                         errors.body[0]
                     }}</span>
-                    <input class="add-post-btn" type="submit" value="Submit" />
+                    <SubmitButton />
+
+                    <div class="go-to-btn">
+                        <router-link :to="{ name: 'DashboardPostsList' }"
+                            ><button class="index">
+                                Post List
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </router-link>
+                    </div>
                 </form>
             </div>
         </div>
@@ -64,8 +73,10 @@ import { defineComponent, PropType } from "vue";
 import { Category } from "../interfaces/Category";
 import { PostFields } from "../interfaces/PostFields";
 import { Errors } from "../interfaces/Errors";
+import SubmitButton from "../main-components/helper-components/SubmitButton.vue";
 
 export default defineComponent({
+    components: { SubmitButton },
     props: {
         slug: {
             type: String as PropType<string>,
@@ -75,11 +86,7 @@ export default defineComponent({
     data() {
         return {
             success: false,
-            fields: {
-                title: "",
-                category_id: "",
-                body: "",
-            } as PostFields,
+            fields: {} as PostFields,
             errors: {} as Errors,
             url: "",
             categories: [] as Category[],
@@ -149,9 +156,6 @@ export default defineComponent({
 
 <style scoped>
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     color: black;
 }
 .create-post {

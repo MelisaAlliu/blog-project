@@ -17,34 +17,26 @@
         class="mySwiper"
     >
         <swiper-slide
-            ><img
-                src="../../../../public/images/carusel-image-1.jpg" /></swiper-slide
+            ><img src="/public/images/carusel-image-1.jpg" /></swiper-slide
         ><swiper-slide
-            ><img
-                src="../../../../public/images/carusel-image-2.jpg" /></swiper-slide
+            ><img src="/public/images/carusel-image-2.jpg" /></swiper-slide
         ><swiper-slide
-            ><img
-                src="../../../../public/images/carusel-image-3.jpg" /></swiper-slide
+            ><img src="/public/images/carusel-image-3.jpg" /></swiper-slide
         ><swiper-slide
-            ><img
-                src="../../../../public/images/carusel-image-4.jpg" /></swiper-slide
+            ><img src="/public/images/carusel-image-4.jpg" /></swiper-slide
         ><swiper-slide
-            ><img
-                src="../../../../public/images/carusel-image-5.jpg" /></swiper-slide
+            ><img src="/public/images/carusel-image-5.jpg" /></swiper-slide
         ><swiper-slide
-            ><img
-                src="../../../../public/images/carusel-image-6.jpg" /></swiper-slide
+            ><img src="/public/images/carusel-image-6.jpg" /></swiper-slide
         ><swiper-slide
-            ><img
-                src="../../../../public/images/carusel-image-7.jpg" /></swiper-slide
+            ><img src="/public/images/carusel-image-7.jpg" /></swiper-slide
         ><swiper-slide
-            ><img
-                src="../../../../public/images/carusel-image-8.jpg" /></swiper-slide
+            ><img src="/public/images/carusel-image-8.jpg" /></swiper-slide
         ><swiper-slide
-            ><img src="../../../../public/images/carusel-image-9.jpg"
+            ><img src="/public/images/carusel-image-9.jpg"
         /></swiper-slide>
         <swiper-slide
-            ><img src="../../../../public/images/carusel-image-10.jpg"
+            ><img src="/public/images/carusel-image-10.jpg"
         /></swiper-slide>
     </swiper>
 </template>

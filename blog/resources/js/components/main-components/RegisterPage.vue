@@ -1,6 +1,6 @@
 <template>
     <div
-        class="form-background-view min-h-screen bg-cover bg-center flex items-center"
+        class="form-background-view register-wrapper min-h-screen bg-cover bg-center flex items-center"
     >
         <form
             @submit.prevent="submit"

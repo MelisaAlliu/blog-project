@@ -1,5 +1,5 @@
 <template>
-    <div id="create-categories">
+    <div class="create-categories">
         <div id="contact-us">
             <h1 class="text-black text-center text-4xl font-bold">
                 Edit Category!
@@ -15,15 +15,18 @@
                     <span v-if="errors.name" class="error">{{
                         errors.name[0]
                     }}</span>
+                    <br />
 
-                    <input type="submit" value="Submit" />
-                    
+                    <SubmitButton />
                 </form>
             </div>
-            <div class="create-categories">
+            <div class="go-to-btn">
                 <router-link :to="{ name: 'CategoriesList' }"
-                    >Categories List <span>&#8594;</span></router-link
-                >
+                    ><button class="index">
+                        Categories List
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </router-link>
             </div>
         </div>
     </div>
@@ -33,8 +36,10 @@ import { defineComponent } from "vue";
 import axios from "axios";
 import { Fields } from "../interfaces/Fields";
 import { Errors } from "../interfaces/Errors";
+import SubmitButton from "../main-components/helper-components/SubmitButton.vue";
 
 export default defineComponent({
+    components: { SubmitButton },
     props: {
         id: Number,
     },
@@ -85,7 +90,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-#create-categories {
+.create-categories {
     background-color: #f3f4f6;
     height: 90vh;
     padding: 50px;
@@ -109,18 +114,5 @@ export default defineComponent({
 h1 {
     text-align: center;
     padding: 40px 0 50px 0;
-}
-
-.add-post-btn {
-    background-color: black;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    transition: 0.3s ease;
-    width: 200px;
-}
-
-.add-post-btn:hover {
-    transform: translateY(-4px);
 }
 </style>

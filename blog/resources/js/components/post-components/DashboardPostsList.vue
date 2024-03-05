@@ -34,8 +34,11 @@
         </div>
         <div class="go-to-btn">
             <router-link :to="{ name: 'CreatePosts' }"
-                ><button class="index-post">Create post</button></router-link
-            >
+                ><button class="index">
+                    Create Posts
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </router-link>
         </div>
     </div>
 </template>
@@ -96,6 +99,7 @@ export default defineComponent({
 .categories-list {
     min-height: 100vh;
     background: #fff;
+    padding-bottom: 50px;
 }
 
 .categories-list h1 {

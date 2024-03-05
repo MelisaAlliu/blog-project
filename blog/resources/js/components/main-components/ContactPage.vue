@@ -1,10 +1,6 @@
 <template>
     <section class="contact-us">
-        <h1>Get in Touch!</h1>
-        <p class="text-center my-6 text-white text-xl">
-            We're thrilled to connect with you! Whether you have questions,
-            feedback, or simply want to say hello, we're all ears.
-        </p>
+        <h1 class="text-center py-8 text-white text-xl">Get in Touch!</h1>
         <div class="success-msg text-green-600" v-if="success">
             <i class="fa fa-check"></i>
             Message sent successfully!
@@ -87,13 +83,8 @@ export default defineComponent({
                 .post("/api/contact", this.fields)
                 .then(() => {
                     console.log("Message sent");
-                    this.fields = {
-                        id: 0,
-                        name: "",
-                        email: "",
-                        message: "",
-                        showFullMessage: false,
-                    };
+                    this.fields = {} as ContactFields;
+                    this.errors = {} as Errors;
                     this.success = true;
                     setTimeout(() => {
                         this.success = false;
@@ -110,9 +101,12 @@ export default defineComponent({
 
 <style scoped>
 .contact-us {
-    background-image: linear-gradient(to bottom right, #141212 30%, #594e2f);
     padding-bottom: 200px;
     padding-right: 50px;
+    background-image: url("/images/contact-background-image.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .contact-us h1 {
     text-align: center;
@@ -209,7 +203,7 @@ textarea {
 .contact-us input[type="submit"] {
     background-color: #aa9b72;
     width: 100px;
-    color: white;
+    color: black;
     border: none;
     cursor: pointer;
     transition: 0.3s ease;

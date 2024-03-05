@@ -1,10 +1,8 @@
 <template>
-    <div class="create-categories bg-white">
+    <div class="create-categories bg-white text-black">
         <div id="contact-us">
             <DashboardButton />
-            <h1 class="text-black text-center text-4xl font-bold">
-                Create New Category!
-            </h1>
+            <h1 class="text-center text-4xl font-bold">Create New Category!</h1>
 
             <div class="success-msg text-green-600" v-if="success">
                 <i class="fa fa-check"></i>
@@ -24,21 +22,14 @@
                     }}</span>
                     <br />
 
-                    <button class="add-post-btn bg-black" type="submit">
-                        <i class="fa-solid fa-right-to-bracket"></i> Submit
-                    </button>
-                    <button
-                        class="cancel-post-btn bg-red-900"
-                        type="button"
-                        @click="cancel()"
-                    >
-                        <i class="fa-solid fa-ban"></i>Cancel
-                    </button>
+                    <SubmitButton />
                 </form>
             </div>
             <div class="go-to-btn">
                 <router-link :to="{ name: 'CategoriesList' }"
-                    ><button class="index-categories">Categories List</button>
+                    ><button class="index">
+                        Categories List <i class="fa-solid fa-arrow-right"></i>
+                    </button>
                 </router-link>
             </div>
         </div>
@@ -50,9 +41,10 @@ import axios from "axios";
 import { Fields } from "../interfaces/Fields";
 import { Errors } from "../interfaces/Errors";
 import DashboardButton from "../main-components/helper-components/DashboardButton.vue";
+import SubmitButton from "../main-components/helper-components/SubmitButton.vue";
 
 export default defineComponent({
-    components: { DashboardButton },
+    components: { DashboardButton, SubmitButton },
     data() {
         return {
             field: {} as Fields,
@@ -76,12 +68,6 @@ export default defineComponent({
                     this.errors = error.response.data.errors;
                 });
         },
-
-        cancel() {
-            this.clearForm();
-            this.$router.push({ name: "CategoriesList" });
-        },
-
         clearForm() {
             this.field = {} as Fields;
             this.errors = {} as Errors;
@@ -110,33 +96,5 @@ form {
 h1 {
     text-align: center;
     padding: 40px 0 50px 0;
-}
-
-.add-post-btn,
-.cancel-post-btn {
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    transition: 0.3s ease;
-    width: 200px;
-    border-radius: 5px;
-}
-
-.add-post-btn:hover {
-    transform: translateY(-4px);
-}
-
-.index-categories {
-    width: 200px;
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    margin-left: 20px;
-    background-color: black;
-}
-.go-to-btn {
-    text-align: center;
-    margin-top: 20px;
 }
 </style>

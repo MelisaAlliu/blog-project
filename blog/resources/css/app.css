@@ -136,7 +136,7 @@ section {
 }
 
 .form-background-view {
-    background-image: url("../../public/images/background-image3.png");
+    background-image: url("/images/background-image3.png");
 }
 
 .form {
@@ -153,6 +153,21 @@ section {
 
 .form-button {
     background-color: #618da8;
+}
+
+.index {
+    width: 200px;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 20px;
+    color: black;
+    border: 1px solid black;
+}
+.go-to-btn {
+    text-align: center;
+    margin-top: 20px;
 }
 
 @media (max-width: 768px) {

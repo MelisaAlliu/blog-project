@@ -1,73 +1,57 @@
 <template>
     <div class="writers-wrapper">
         <div class="writers">
-            <img
-                class="logo"
-                src="../../../../../public/images/writer-logo-1.PNG"
-                alt=""
-            />
+            <img class="logo" src="/public/images/writer-logo-1.PNG" alt="" />
             <img
                 class="front-image"
-                src="../../../../../public/images/writer-back-image-1.png"
+                src="/public/images/writer-back-image-1.png"
                 alt=""
             />
             <img
                 class="bg-image"
-                src="../../../../../public/images/writer-front-image-1.jpg"
+                src="/public/images/writer-front-image-1.jpg"
                 alt=""
             />
         </div>
 
         <div class="writers">
-            <img
-                class="logo"
-                src="../../../../../public/images/writer-logo-2.PNG"
-                alt=""
-            />
+            <img class="logo" src="/public/images/writer-logo-2.PNG" alt="" />
             <img
                 class="front-image"
-                src="../../../../../public/images/writer-back-image-2.png"
+                src="/public/images/writer-back-image-2.png"
                 alt=""
             />
             <img
                 class="bg-image"
-                src="../../../../../public/images/writer-front-image-2.jpg"
+                src="/public/images/writer-front-image-2.jpg"
                 alt=""
             />
         </div>
 
         <div class="writers">
-            <img
-                class="logo"
-                src="../../../../../public/images/writer-logo-3.png"
-                alt=""
-            />
+            <img class="logo" src="/public/images/writer-logo-3.png" alt="" />
             <img
                 class="front-image"
-                src="../../../../../public/images/writer-back-image-3.png"
+                src="/public/images/writer-back-image-3.png"
                 alt=""
             />
             <img
                 class="bg-image"
-                src="../../../../../public/images/writer-front-image-3.jpg"
+                src="/public/images/writer-front-image-3.jpg"
                 alt=""
             />
         </div>
 
         <div class="writers">
-            <img
-                class="logo"
-                src="../../../../../public/images/writer-logo-4.png"
-                alt=""
-            />
+            <img class="logo" src="/public/images/writer-logo-4.png" alt="" />
             <img
                 class="front-image"
-                src="../../../../../public/images/writer-back-image-4.png"
+                src="/public/images/writer-back-image-4.png"
                 alt=""
             />
             <img
                 class="bg-image"
-                src="../../../../../public/images/writer-front-image-4.jpg"
+                src="/public/images/writer-front-image-4.jpg"
                 alt=""
             />
         </div>
